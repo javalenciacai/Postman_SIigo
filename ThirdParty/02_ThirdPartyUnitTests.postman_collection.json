@@ -1,0 +1,266 @@
+{
+	"info": {
+		"_postman_id": "ac43513c-ce34-4494-bebd-5e0b6d19e15b",
+		"name": "02_ThirdPartyUnitTests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "01_create_special_char",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d8f3b1a9-4f54-4ff3-b3d5-292a04d2d02e",
+						"exec": [
+							"bodyRequest = JSON.parse(responseBody)",
+							"",
+							"pm.test(\"Response time is less than 400ms\", function () {",
+							"    console.log(\"Response time - Create Request (special characters): \"+pm.response.responseTime);",
+							"    pm.expect(pm.response.responseTime).to.be.below(400);",
+							"});",
+							"",
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"//var code_value = bodyRequest.accountDto.code;",
+							"//var new_code = parseInt(code_value)+1;",
+							"//console.log(new_code);",
+							"//pm.environment.set(\"var_code\", new_code);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "0e10c1e3-a994-40b0-ad8b-4036d81b7870",
+						"exec": [
+							"pm.environment.set(\"firstName\",\"<#$%&/()?¡\");",
+							"pm.environment.set(\"lastName\",\"<#$%&/()?¡\");",
+							"pm.environment.set(\"idTypeCode\",\"<#$%&/()?¡\");",
+							"pm.environment.set(\"identification\",\"<#$%&/()?¡\");",
+							"pm.environment.set(\"address\",\"<#$%&/()?¡\");",
+							"pm.environment.set(\"city\",\"<#$%&/()?¡\");",
+							"pm.environment.set(\"taxClassificationCode\",\"<#$%&/()?¡\");",
+							"pm.environment.set(\"phoneindicative\",\"<#$%&/()?¡\");",
+							"pm.environment.set(\"phonenumber\",\"<#$%&/()?¡\");",
+							"pm.environment.set(\"phoneextention\",\"<#$%&/()?¡\");",
+							"pm.environment.set(\"contactsfirstName\",\"<#$%&/()?¡\");",
+							"pm.environment.set(\"contactslastName\",\"<#$%&/()?¡\");",
+							"pm.environment.set(\"contactsemail\",\"<#$%&/()?¡\");",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "{{token}}"
+					},
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "text/plain"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"accountDto\": {\r\n        \"basicData\": {\r\n            \"isCustomer\": true,\r\n            \"isDealer\": false,\r\n            \"isLeaflet\": false,\r\n            \"isSupplier\": false,\r\n            \"isSocialReason\": true,\r\n            \"isBank\": false,\r\n            \"firstName\": \"{{firstName}}\",\r\n            \"lastName\": \"{{lastName}}\",\r\n            \"fullName\": \"\",\r\n            \"idTypeCode\": 75,\r\n            \"identification\": \"{{identification}}\",\r\n            \"checkDigit\": null,\r\n            \"branchOffice\": null,\r\n            \"taxClassificationCode\": null,\r\n            \"companyName\": \"\",\r\n            \"webSite\": \"\",\r\n            \"accountParentCode\": null,\r\n            \"address\": \"{{address}}\",\r\n            \"usersCode\": null,\r\n            \"city\": 19001,\r\n            \"isVatCompanyType\": true,\r\n            \"taxPersonTypeCode\": null,\r\n            \"businessActivityCode\": \"\",\r\n            \"isAgentRetainer\": true,\r\n            \"isAgentAutoretainer\": true,\r\n            \"isDeclarant\": true,\r\n            \"isLocked\": true,\r\n            \"fax\": {\r\n                \"indicative\": \"\",\r\n                \"number\": \"\",\r\n                \"extention\": \"\"\r\n            },\r\n            \"phone\": [\r\n                {\r\n                    \"indicative\": \"{{phoneindicative}}\",\r\n                    \"number\": \"{{phonenumber}}\",\r\n                    \"extention\": \"{{phoneextention}}\"\r\n                }\r\n            ]\r\n        },\r\n        \"status\": {\r\n            \"isActive\": true\r\n        },\r\n        \"principalLocation\": {\r\n            \"email\": \"\"\r\n        },\r\n        \"contacts\": [\r\n            {\r\n                \"firstName\": \"{{contactsfirstName}}\",\r\n                \"lastName\": \"{{contactslastName}}\",\r\n                \"officePhone\": null,\r\n                \"cellPhone\": [{ \"number\":\"\" }],\r\n                \"email\": \"{{contactsemail}}\",\r\n                \"isPrincipal\": true\r\n            }\r\n        ],\r\n        \"segmentation\": {\r\n            \"accountRatingCode\": 1,\r\n            \"sizeCode\": 10,\r\n            \"subEconomicSectorCode\": 1,\r\n            \"annualSaleCode\": 1,\r\n            \"employeeNumberCode\": 1\r\n        },\r\n        \"relatedUsers\": {\r\n            \"directorId\": 0,\r\n            \"salesmanId\": 1,\r\n            \"distributorCode\": 1\r\n        },\r\n        \"collectorId\": 21,\r\n        \"comments\": \"\",\r\n        \"postalCode\": \"\",\r\n        \"picture\": \"\",\r\n        \"fiscalResponsibilityCode\": \"{}\",\r\n        \"accountState\": 0,\r\n        \"foreignIdentification\": \"\",\r\n        \"accountTypes\": \"\",\r\n        \"accountSubStateCode\": 0,\r\n        \"erpContactCode\": 99,\r\n        \"commercialActivity\": 0,\r\n        \"moneyCode\": \"\",\r\n        \"eInvoiceReceiveType\": 0,\r\n        \"vatCompanyType\": 0,\r\n        \"acceptElectronicInvoice\": true,\r\n        \"billingOnlineState\": 0,\r\n        \"taxConfig\": \"\",\r\n        \"isActive\": true,\r\n        \"freeFields\": [\r\n            {\r\n                \"name\": \"\",\r\n                \"value\": \"\"\r\n            }\r\n        ]\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}:5000/api/third-party/account",
+					"host": [
+						"{{url}}"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"third-party",
+						"account"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "01_create_empty_fields",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d8f3b1a9-4f54-4ff3-b3d5-292a04d2d02e",
+						"exec": [
+							"bodyRequest = JSON.parse(responseBody)",
+							"",
+							"pm.test(\"Response time is less than 400ms\", function () {",
+							"    console.log(\"Response time - Create Request (empty fields): \"+pm.response.responseTime);",
+							"    pm.expect(pm.response.responseTime).to.be.below(400);",
+							"});",
+							"",
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"//var code_value = bodyRequest.accountDto.code;",
+							"//var new_code = parseInt(code_value)+1;",
+							"//console.log(new_code);",
+							"//pm.environment.set(\"var_code\", new_code);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "0e10c1e3-a994-40b0-ad8b-4036d81b7870",
+						"exec": [
+							"pm.environment.set(\"firstName\",\"\");",
+							"pm.environment.set(\"lastName\",\"\");",
+							"pm.environment.set(\"idTypeCode\",\"\");",
+							"pm.environment.set(\"identification\",\"\");",
+							"pm.environment.set(\"address\",\"\");",
+							"pm.environment.set(\"taxClassificationCode\",\"\");",
+							"pm.environment.set(\"phoneindicative\",\"\");",
+							"pm.environment.set(\"phonenumber\",\"\");",
+							"pm.environment.set(\"phoneextention\",\"\");",
+							"pm.environment.set(\"contactsfirstName\",\"\");",
+							"pm.environment.set(\"contactslastName\",\"\");",
+							"pm.environment.set(\"contactsemail\",\"\");",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "{{token}}"
+					},
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "text/plain"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"accountDto\": {\r\n        \"basicData\": {\r\n            \"isCustomer\": true,\r\n            \"isDealer\": false,\r\n            \"isLeaflet\": false,\r\n            \"isSupplier\": false,\r\n            \"isSocialReason\": true,\r\n            \"isBank\": false,\r\n            \"firstName\": \"{{firstName}}\",\r\n            \"lastName\": \"{{lastName}}\",\r\n            \"fullName\": \"\",\r\n            \"idTypeCode\": 75,\r\n            \"identification\": \"{{identification}}\",\r\n            \"checkDigit\": 0,\r\n            \"branchOffice\": 0,\r\n            \"taxClassificationCode\": 1,\r\n            \"companyName\": \"\",\r\n            \"webSite\": \"\",\r\n            \"accountParentCode\": 1,\r\n            \"address\": \"{{address}}\",\r\n            \"usersCode\": 12,\r\n            \"city\": 19001,\r\n            \"isVatCompanyType\": true,\r\n            \"taxPersonTypeCode\": 0,\r\n            \"businessActivityCode\": \"\",\r\n            \"isAgentRetainer\": true,\r\n            \"isAgentAutoretainer\": true,\r\n            \"isDeclarant\": true,\r\n            \"isLocked\": true,\r\n            \"fax\": {\r\n                \"indicative\": \"\",\r\n                \"number\": \"\",\r\n                \"extention\": \"\"\r\n            },\r\n            \"phone\": [\r\n                {\r\n                    \"indicative\": \"{{phoneindicative}}\",\r\n                    \"number\": \"{{phonenumber}}\",\r\n                    \"extention\": \"{{phoneextention}}\"\r\n                }\r\n            ]\r\n        },\r\n        \"status\": {\r\n            \"isActive\": true\r\n        },\r\n        \"principalLocation\": {\r\n            \"email\": \"\"\r\n        },\r\n        \"contacts\": [\r\n            {\r\n                \"firstName\": \"{{contactsfirstName}}\",\r\n                \"lastName\": \"{{contactslastName}}\",\r\n                \"officePhone\": null,\r\n                \"cellPhone\": [{ \"number\":\"\" }],\r\n                \"email\": \"{{contactsemail}}\",\r\n                \"isPrincipal\": true\r\n            }\r\n        ],\r\n        \"segmentation\": {\r\n            \"accountRatingCode\": 1,\r\n            \"sizeCode\": 10,\r\n            \"subEconomicSectorCode\": 1,\r\n            \"annualSaleCode\": 1,\r\n            \"employeeNumberCode\": 1\r\n        },\r\n        \"relatedUsers\": {\r\n            \"directorId\": 0,\r\n            \"salesmanId\": 1,\r\n            \"distributorCode\": 1\r\n        },\r\n        \"collectorId\": 21,\r\n        \"comments\": \"\",\r\n        \"postalCode\": \"\",\r\n        \"picture\": \"\",\r\n        \"fiscalResponsibilityCode\": \"{}\",\r\n        \"accountState\": 0,\r\n        \"foreignIdentification\": \"\",\r\n        \"accountTypes\": \"\",\r\n        \"accountSubStateCode\": 0,\r\n        \"erpContactCode\": 99,\r\n        \"commercialActivity\": 0,\r\n        \"moneyCode\": \"\",\r\n        \"eInvoiceReceiveType\": 0,\r\n        \"vatCompanyType\": 0,\r\n        \"acceptElectronicInvoice\": true,\r\n        \"billingOnlineState\": 0,\r\n        \"taxConfig\": \"\",\r\n        \"isActive\": true,\r\n        \"freeFields\": [\r\n            {\r\n                \"name\": \"\",\r\n                \"value\": \"\"\r\n            }\r\n        ]\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}:5000/api/third-party/account",
+					"host": [
+						"{{url}}"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"third-party",
+						"account"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "04_update_special_char",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "39ca0f79-0283-4a7d-b187-1d18de95002a",
+						"exec": [
+							"console.log(pm.environment.get(\"accountId\"))",
+							"",
+							"var firstname = pm.environment.get(\"firstName\") + 'Modified';",
+							"pm.environment.set(\"firstName\", firstname);",
+							"var lastname = pm.environment.get(\"lastName\") + 'Modified';",
+							"pm.environment.set(\"lastName\", lastname);",
+							"var fullname = firstname + ' ' + lastname;",
+							"//pm.environment.set(\"fullName\", fullname);",
+							"//pm.environment.set(\"firstName\")"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "text/plain",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{{findResponseBody}}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}:5000/api/third-party/account/",
+					"host": [
+						"{{url}}"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"third-party",
+						"account",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

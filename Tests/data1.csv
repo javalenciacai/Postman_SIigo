@@ -1,0 +1,3 @@
+enpoint,email,password
+api/register/preprod,eve.holt@reqres.in,pistol
+api/register/preprod,james@gmail.com,automation

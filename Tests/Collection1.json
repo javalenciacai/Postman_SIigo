@@ -1,0 +1,324 @@
+{
+	"info": {
+		"_postman_id": "777a4d32-adf4-4c39-a6ad-a69b3e591252",
+		"name": "My First Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET",
+			"item": [
+				{
+					"name": "Get UserList",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2602539e-2c5e-48f8-b9c1-f504e03e4bb9",
+								"exec": [
+									"console.log(\"Hello worlds..\")\r",
+									"\r",
+									"\r",
+									"let urlVar = pm.variables.get(\"url\")\r",
+									"\r",
+									"console.log(\"El valor de la variable url es :\" + urlVar)\r",
+									"\r",
+									"pm.variables.set(\"name\",\"POSTMAN\")\r",
+									"\r",
+									"console.log(pm.variables.get(\"name\"))\r",
+									"\r",
+									"\r",
+									"let globalVar = pm.globals.get(\"Env\")\r",
+									"\r",
+									"console.log(globalVar)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/users?page=2",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"users"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET User",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "58b6f842-2112-450a-8fd0-34de636a455c",
+								"exec": [
+									"console.log(\"Yo soy pre-request Script\")"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "33c22262-2fff-44ef-80c6-ab97f76c4060",
+								"exec": [
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://reqres.in/api/users/2",
+							"protocol": "https",
+							"host": [
+								"reqres",
+								"in"
+							],
+							"path": [
+								"api",
+								"users",
+								"2"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "GET User",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://reqres.in/api/users/2",
+									"protocol": "https",
+									"host": [
+										"reqres",
+										"in"
+									],
+									"path": [
+										"api",
+										"users",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 01 Jun 2020 14:37:21 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"173-1Z8bn0V7UjH6FK7NCaza1ccWXQk\""
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=14400"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "HIT"
+								},
+								{
+									"key": "Age",
+									"value": "2770"
+								},
+								{
+									"key": "cf-request-id",
+									"value": "0311e9df920000ef32f6833200000001"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "59c9ac128b01ef32-MIA"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": 2,\n        \"email\": \"janet.weaver@reqres.in\",\n        \"first_name\": \"Janet\",\n        \"last_name\": \"Weaver\",\n        \"avatar\": \"https://s3.amazonaws.com/uifaces/faces/twitter/josephstein/128.jpg\"\n    },\n    \"ad\": {\n        \"company\": \"StatusCode Weekly\",\n        \"url\": \"http://statuscode.org/\",\n        \"text\": \"A weekly newsletter focusing on software development, infrastructure, the server, performance, and the stack end of things.\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "ScriptsTest",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "POST",
+			"item": [],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "POST2",
+			"item": [
+				{
+					"name": "User Registration",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"{{email}}\",\r\n    \"password\": \"{{password}}\"\r\n}"
+						},
+						"url": {
+							"raw": "https://reqres.in/{{enpoint}}",
+							"protocol": "https",
+							"host": [
+								"reqres",
+								"in"
+							],
+							"path": [
+								"{{enpoint}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "https://postman-echo.com/get",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://postman-echo.com/get",
+					"protocol": "https",
+					"host": [
+						"postman-echo",
+						"com"
+					],
+					"path": [
+						"get"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "cc4fcf92-add0-47a4-8284-4a182ef30e80",
+				"type": "text/javascript",
+				"exec": [
+					"console.log(\"Hello worlds..\")",
+					"",
+					"",
+					"let urlVar = pm.variables.get(\"url\")",
+					"",
+					"console.log(\"El valor de la variable url es :\" + urlVar)",
+					"",
+					"pm.variables.set(\"name\",\"POSTMAN\")",
+					"",
+					"console.log(pm.variables.get(\"name\"))",
+					"",
+					"",
+					"let globalVar = pm.globals.get(\"Env\")",
+					"",
+					"console.log(globalVar)"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "155be8da-3d63-424c-87c3-685e4efd3494",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "0a4e8e4a-c849-4b16-8988-99a6bde5b738",
+			"key": "url",
+			"value": ""
+		}
+	],
+	"protocolProfileBehavior": {}
+}

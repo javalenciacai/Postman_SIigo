@@ -1,0 +1,81 @@
+{
+	"info": {
+		"_postman_id": "5b41fa5c-a5b4-406b-91f4-75fb85f9bd8d",
+		"name": "auth",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7a89bf2e-92b9-4134-b1c6-041a01651a6a",
+						"exec": [
+							"bodyData = JSON.parse(responseBody)",
+							"",
+							"token_value = bodyData.access_token",
+							"console.log(token_value)",
+							"",
+							"pm.environment.set(\"token\", token_value);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic U2lpZ29XZWI6QUJBMDhCNkEtQjU2Qy00MEE1LTkwQ0YtN0MxRTU0ODkxQjYx",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "1111",
+							"type": "text"
+						},
+						{
+							"key": "scope",
+							"value": "WebApi offline_access",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "admin@crazyempresa.com",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://23.101.145.208:50000/connect/token",
+					"protocol": "http",
+					"host": [
+						"23",
+						"101",
+						"145",
+						"208"
+					],
+					"port": "50000",
+					"path": [
+						"connect",
+						"token"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

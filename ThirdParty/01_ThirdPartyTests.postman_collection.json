@@ -1,0 +1,692 @@
+{
+	"info": {
+		"_postman_id": "3513ea04-08d6-4b4c-b1fe-3843c077f0bb",
+		"name": "01_ThirdPartyTests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "01_auth",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "aed1b308-d223-4ead-b0c0-f6a5cb4c9e33",
+						"exec": [
+							"bodyData = JSON.parse(responseBody)",
+							"",
+							"token_value = bodyData.access_token",
+							"console.log(token_value)",
+							"",
+							"pm.environment.set(\"token\", token_value);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic U2lpZ29XZWI6QUJBMDhCNkEtQjU2Qy00MEE1LTkwQ0YtN0MxRTU0ODkxQjYx",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "1111",
+							"type": "text"
+						},
+						{
+							"key": "scope",
+							"value": "WebApi offline_access",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "admin@crazyempresa.com",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://23.101.145.208:50000/connect/token",
+					"protocol": "http",
+					"host": [
+						"23",
+						"101",
+						"145",
+						"208"
+					],
+					"port": "50000",
+					"path": [
+						"connect",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "02_create_all_fields",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d8f3b1a9-4f54-4ff3-b3d5-292a04d2d02e",
+						"exec": [
+							"var jsonData = pm.response.json();",
+							"guid_value = jsonData.accountDto.guid;",
+							"",
+							"pm.environment.set(\"guid\", guid_value);",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    console.log(\"Response time - Create Request: \"+pm.response.responseTime);",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"/*Mandatory fields*/",
+							"",
+							"pm.test(\"Verify third party first name\", function () {",
+							"    console.log(jsonData.accountDto.basicData.firstName);",
+							"    console.log(pm.variables.get(\"firstName\"));",
+							"    pm.expect(jsonData.accountDto.basicData.firstName).to.eql(pm.variables.get(\"firstName\"));",
+							"});",
+							"",
+							"pm.test(\"Verify third party lastname\", function () {",
+							"    console.log(jsonData.accountDto.basicData.lastName);",
+							"    console.log(pm.variables.get(\"lastName\"));",
+							"    pm.expect(jsonData.accountDto.basicData.lastName).to.eql(pm.variables.get(\"lastName\"));",
+							"});",
+							"",
+							"pm.test(\"Verify third party fullname\", function () {",
+							"    let name = jsonData.accountDto.basicData.firstName;",
+							"    let lastname = jsonData.accountDto.basicData.lastName; ",
+							"    let fullName = name + \" \" + lastname;",
+							"    console.log(fullName);",
+							"    pm.expect(jsonData.accountDto.basicData.fullName).to.eql(fullName);",
+							"});",
+							"",
+							"pm.test(\"Verify third party identification\", function () {",
+							"    pm.expect(jsonData.accountDto.basicData.identification).to.eql(String(pm.variables.get(\"identification\")));",
+							"});",
+							"",
+							"pm.test(\"Verify third party address\", function () {",
+							"    pm.expect(jsonData.accountDto.basicData.address).to.eql(pm.variables.get(\"address\"));",
+							"});",
+							"",
+							"pm.test(\"Verify third party city\", function () {",
+							"    pm.expect(jsonData.accountDto.basicData.city).to.eql(pm.variables.get(\"city\"));",
+							"});",
+							"",
+							"pm.test(\"Verify third party contact email\", function () {",
+							"    pm.expect(jsonData.accountDto.contacts[0].email).to.eql(pm.variables.get(\"contactsemail\"));",
+							"});",
+							"",
+							"/*Other fields*/",
+							"",
+							"pm.test(\"Verify third party isCustomer\", function () {",
+							"    pm.expect(String(jsonData.accountDto.basicData.isCustomer)).to.eql(pm.variables.get(\"isCustomer\"));",
+							"});",
+							"",
+							"pm.test(\"Verify third party isDealer\", function () {",
+							"    pm.expect(String(jsonData.accountDto.basicData.isDealer)).to.eql(pm.variables.get(\"isDealer\"));",
+							"});",
+							"",
+							"pm.test(\"Verify third party isLeaflet\", function () {",
+							"    pm.expect(String(jsonData.accountDto.basicData.isLeaflet)).to.eql(pm.variables.get(\"isLeaflet\"));",
+							"});",
+							"",
+							"pm.test(\"Verify third party isSupplier\", function () {",
+							"    pm.expect(String(jsonData.accountDto.basicData.isSupplier)).to.eql(pm.variables.get(\"isSupplier\"));",
+							"});",
+							"",
+							"pm.test(\"Verify third party isSocialReason\", function () {",
+							"    pm.expect(String(jsonData.accountDto.basicData.isSocialReason)).to.eql(pm.variables.get(\"isSocialReason\"));",
+							"});",
+							"",
+							"pm.test(\"Verify third party isBank\", function () {",
+							"    pm.expect(String(jsonData.accountDto.basicData.isBank)).to.eql(pm.variables.get(\"isBank\"));",
+							"});",
+							"",
+							"pm.test(\"Verify third party taxClassificationCode\", function () {",
+							"    pm.expect(jsonData.accountDto.basicData.taxClassificationCode).to.eql(pm.variables.get(\"taxClassificationCode\"));",
+							"});",
+							"",
+							"pm.test(\"Verify third party check digit\", function () {",
+							"    pm.expect(jsonData.accountDto.basicData.checkDigit).to.eql(pm.variables.get(\"checkDigit\"));",
+							"});",
+							"",
+							"pm.test(\"Verify third party branchOffice\", function () {",
+							"    pm.expect(jsonData.accountDto.basicData.branchOffice).to.eql(pm.variables.get(\"branchOffice\"));",
+							"});",
+							"",
+							"pm.test(\"Verify third party companyName\", function () {",
+							"    pm.expect(jsonData.accountDto.basicData.companyName).to.eql(pm.variables.get(\"companyName\"));",
+							"});",
+							"",
+							"pm.test(\"Verify third party webSite\", function () {",
+							"    pm.expect(jsonData.accountDto.basicData.webSite).to.eql(pm.variables.get(\"webSite\"));",
+							"});",
+							"",
+							"pm.test(\"Verify third party accountParentCode\", function () {",
+							"    pm.expect(jsonData.accountDto.basicData.accountParentCode).to.eql(pm.variables.get(\"accountParentCode\"));",
+							"});",
+							"",
+							"pm.test(\"Verify third party usersCode\", function () {",
+							"    pm.expect(jsonData.accountDto.basicData.usersCode).to.eql(pm.variables.get(\"usersCode\"));",
+							"});",
+							"",
+							"//pm.test(\"Verify third party isVatCompanyType\", function () {",
+							"//    pm.expect(String(jsonData.accountDto.basicData.isVatCompanyType)).to.eql(pm.variables.get(\"isVatCompanyType\"));",
+							"//});",
+							"",
+							"pm.test(\"Verify third party taxPersonTypeCode\", function () {",
+							"    pm.expect(jsonData.accountDto.basicData.taxPersonTypeCode).to.eql(pm.variables.get(\"taxPersonTypeCode\"));",
+							"});",
+							"",
+							"pm.test(\"Verify third party businessActivityCode\", function () {",
+							"    pm.expect(jsonData.accountDto.basicData.businessActivityCode).to.eql(String(pm.variables.get(\"businessActivityCode\")));",
+							"});",
+							"",
+							"pm.test(\"Verify third party isAgentRetainer\", function () {",
+							"    pm.expect(String(jsonData.accountDto.basicData.isAgentRetainer)).to.eql(pm.variables.get(\"isAgentRetainer\"));",
+							"});",
+							"",
+							"pm.test(\"Verify third party isAgentAutoretainer\", function () {",
+							"    pm.expect(String(jsonData.accountDto.basicData.isAgentAutoretainer)).to.eql(pm.variables.get(\"isAgentAutoretainer\"));",
+							"});",
+							"",
+							"pm.test(\"Verify third party isDeclarant\", function () {",
+							"    pm.expect(String(jsonData.accountDto.basicData.isDeclarant)).to.eql(pm.variables.get(\"isDeclarant\"));",
+							"});",
+							"",
+							"pm.test(\"Verify third party isLocked\", function () {",
+							"    pm.expect(String(jsonData.accountDto.basicData.isLocked)).to.eql(pm.variables.get(\"isLocked\"));",
+							"});",
+							"",
+							"/*fax*/",
+							"",
+							"pm.test(\"Verify third party fax indicative\", function () {",
+							"    pm.expect(jsonData.accountDto.basicData.fax.indicative).to.eql(String(pm.variables.get(\"faxindicative\")));",
+							"});",
+							"",
+							"pm.test(\"Verify third party fax number\", function () {",
+							"    pm.expect(jsonData.accountDto.basicData.fax.number).to.eql(String(pm.variables.get(\"faxnumber\")));",
+							"});",
+							"",
+							"pm.test(\"Verify third party fax extention\", function () {",
+							"    pm.expect(jsonData.accountDto.basicData.fax.extention).to.eql(String(pm.variables.get(\"faxextention\")));",
+							"});",
+							"",
+							"",
+							"/*phone*/",
+							"",
+							"pm.test(\"Verify third party phone indicative\", function () {",
+							"    pm.expect(jsonData.accountDto.basicData.phone[0].indicative).to.eql(pm.variables.get(\"phoneindicative\"));",
+							"});",
+							"",
+							"pm.test(\"Verify third party phone number\", function () {",
+							"    pm.expect(jsonData.accountDto.basicData.phone[0].number).to.eql(String(pm.variables.get(\"phonenumber\")));",
+							"});",
+							"",
+							"pm.test(\"Verify third party phone extention\", function () {",
+							"    pm.expect(jsonData.accountDto.basicData.phone[0].extention).to.eql(String(pm.variables.get(\"phoneextention\")));",
+							"});",
+							"",
+							"/*Contact*/",
+							"",
+							"pm.test(\"Verify third party contact firstName\", function () {",
+							"    pm.expect(jsonData.accountDto.contacts[0].firstName).to.eql(pm.variables.get(\"contactsfirstName\"));",
+							"});",
+							"",
+							"pm.test(\"Verify third party contact lastName\", function () {",
+							"    pm.expect(jsonData.accountDto.contacts[0].lastName).to.eql(pm.variables.get(\"contactslastName\"));",
+							"});",
+							"",
+							"pm.test(\"Verify third party contact officePhone indicative\", function () {",
+							"    pm.expect(jsonData.accountDto.contacts[0].officePhone[0].indicative).to.eql(pm.variables.get(\"contactsofficePhoneIndicative\"));",
+							"});",
+							"",
+							"pm.test(\"Verify third party contact officePhone number\", function () {",
+							"    pm.expect(jsonData.accountDto.contacts[0].officePhone[0].number).to.eql(pm.variables.get(\"contactsofficePhoneNumber\"));",
+							"});",
+							"",
+							"pm.test(\"Verify third party contact officePhone extention\", function () {",
+							"    pm.expect(jsonData.accountDto.contacts[0].officePhone[0].extention).to.eql(pm.variables.get(\"contactsofficePhoneExtention\"));",
+							"});",
+							"",
+							"pm.test(\"Verify third party contact cellPhone indicative\", function () {",
+							"    pm.expect(jsonData.accountDto.contacts[0].cellPhone[0].indicative).to.eql(String(pm.variables.get(\"contactscellPhoneIndicative\")));",
+							"});",
+							"",
+							"pm.test(\"Verify third party contact cellPhone number\", function () {",
+							"    pm.expect(jsonData.accountDto.contacts[0].cellPhone[0].number).to.eql(String(pm.variables.get(\"contactscellPhoneNumber\")));",
+							"});",
+							"",
+							"pm.test(\"Verify third party contact cellPhone extention\", function () {",
+							"    pm.expect(jsonData.accountDto.contacts[0].cellPhone[0].extention).to.eql(String(pm.variables.get(\"contactscellPhoneExtention\")));",
+							"});",
+							"",
+							"pm.test(\"Verify third party contact isPrincipal\", function () {",
+							"    pm.expect(String(jsonData.accountDto.contacts[0].isPrincipal)).to.eql(pm.variables.get(\"contactsisPrincipal\"));",
+							"});",
+							"",
+							"/*status*/",
+							"pm.test(\"Verify third party status\", function () {",
+							"    pm.expect(String(jsonData.accountDto.status.isActive)).to.eql(pm.variables.get(\"statusisActive\"));",
+							"});",
+							"",
+							"/*principalLocation*/",
+							"pm.test(\"Verify third party principal location\", function () {",
+							"    pm.expect(jsonData.accountDto.principalLocation.email).to.eql(pm.variables.get(\"principalLocationemail\"));",
+							"});",
+							"",
+							"/*segmentation*/",
+							"",
+							"pm.test(\"Verify third party segmentation account ratingCode\", function () {",
+							"    pm.expect(jsonData.accountDto.segmentation.accountRatingCode).to.eql(pm.variables.get(\"segmentationaccountRatingCode\"));",
+							"});",
+							"",
+							"pm.test(\"Verify third party segmentation size code\", function () {",
+							"    pm.expect(jsonData.accountDto.segmentation.sizeCode).to.eql(pm.variables.get(\"segmentationsizeCode\"));",
+							"});",
+							"",
+							"pm.test(\"Verify third party segmentation sub economic sector code\", function () {",
+							"    pm.expect(jsonData.accountDto.segmentation.subEconomicSectorCode).to.eql(pm.variables.get(\"segmentationsubEconomicSectorCode\"));",
+							"});",
+							"",
+							"pm.test(\"Verify third party segmentation annual sale code\", function () {",
+							"    pm.expect(jsonData.accountDto.segmentation.annualSaleCode).to.eql(pm.variables.get(\"segmentationannualSaleCode\"));",
+							"});",
+							"",
+							"pm.test(\"Verify third party segmentation employee number code\", function () {",
+							"    pm.expect(jsonData.accountDto.segmentation.employeeNumberCode).to.eql(pm.variables.get(\"segmentationemployeeNumberCode\"));",
+							"});",
+							"",
+							"",
+							"/*relatedUsers*/",
+							"",
+							"pm.test(\"Verify third party related users directorId\", function () {",
+							"    pm.expect(jsonData.accountDto.relatedUsers.directorId).to.eql(pm.variables.get(\"relatedUsersdirectorId\"));",
+							"});",
+							"",
+							"pm.test(\"Verify third party related users salesmanId\", function () {",
+							"    pm.expect(jsonData.accountDto.relatedUsers.salesmanId).to.eql(pm.variables.get(\"relatedUserssalesmanId\"));",
+							"});",
+							"",
+							"pm.test(\"Verify third party related users distributorCode\", function () {",
+							"    pm.expect(jsonData.accountDto.relatedUsers.distributorCode).to.eql(pm.variables.get(\"relatedUsersdistributorCode\"));",
+							"});",
+							"",
+							"",
+							"/*AccountDto*/",
+							"",
+							"pm.test(\"Verify third party collectorId\", function () {",
+							"    pm.expect(jsonData.accountDto.collectorId).to.eql(pm.variables.get(\"collectorId\"));",
+							"});",
+							"",
+							"pm.test(\"Verify third party comments\", function () {",
+							"    pm.expect(jsonData.accountDto.comments).to.eql(pm.variables.get(\"comments\"));",
+							"});",
+							"",
+							"pm.test(\"Verify third party postalCode\", function () {",
+							"    pm.expect(jsonData.accountDto.postalCode).to.eql(String(pm.variables.get(\"postalCode\")));",
+							"});",
+							"",
+							"//pm.test(\"Verify third party picture\", function () {",
+							"//    pm.expect(jsonData.accountDto.picture).to.eql(pm.variables.get(\"picture\"));",
+							"//});",
+							"",
+							"//pm.test(\"Verify third party fiscalResponsibilityCode\", function () {",
+							"//    pm.expect(jsonData.accountDto.fiscalResponsibilityCode).to.eql(pm.variables.get(\"fiscalResponsibilityCode\"));",
+							"//});",
+							"",
+							"pm.test(\"Verify third party accountState\", function () {",
+							"    pm.expect(jsonData.accountDto.accountState).to.eql(pm.variables.get(\"accountState\"));",
+							"});",
+							"",
+							"pm.test(\"Verify third party foreignIdentification\", function () {",
+							"    pm.expect(jsonData.accountDto.foreignIdentification).to.eql(String(pm.variables.get(\"foreignIdentification\")));",
+							"});",
+							"",
+							"pm.test(\"Verify third party accountTypes\", function () {",
+							"    pm.expect(jsonData.accountDto.accountTypes).to.eql(String(pm.variables.get(\"accountTypes\")));",
+							"});",
+							"",
+							"pm.test(\"Verify third party accountSubStateCode\", function () {",
+							"    pm.expect(jsonData.accountDto.accountSubStateCode).to.eql(pm.variables.get(\"accountSubStateCode\"));",
+							"});",
+							"",
+							"pm.test(\"Verify third party erpContactCode\", function () {",
+							"    pm.expect(jsonData.accountDto.erpContactCode).to.eql(pm.variables.get(\"erpContactCode\"));",
+							"});",
+							"",
+							"pm.test(\"Verify third party commercialActivity\", function () {",
+							"    pm.expect(jsonData.accountDto.commercialActivity).to.eql(pm.variables.get(\"commercialActivity\"));",
+							"});",
+							"",
+							"pm.test(\"Verify third party moneyCode\", function () {",
+							"    pm.expect(jsonData.accountDto.moneyCode).to.eql(String(pm.variables.get(\"moneyCode\")));",
+							"});",
+							"",
+							"pm.test(\"Verify third party eInvoiceReceiveType\", function () {",
+							"    pm.expect(jsonData.accountDto.eInvoiceReceiveType).to.eql(pm.variables.get(\"eInvoiceReceiveType\"));",
+							"});",
+							"",
+							"pm.test(\"Verify third party vatCompanyType\", function () {",
+							"    pm.expect(jsonData.accountDto.vatCompanyType).to.eql(pm.variables.get(\"vatCompanyType\"));",
+							"});",
+							"",
+							"pm.test(\"Verify third party acceptElectronicInvoice\", function () {",
+							"    pm.expect(String(jsonData.accountDto.acceptElectronicInvoice)).to.eql(pm.variables.get(\"acceptElectronicInvoice\"));",
+							"});",
+							"",
+							"pm.test(\"Verify third party billingOnlineState\", function () {",
+							"    pm.expect(jsonData.accountDto.billingOnlineState).to.eql(pm.variables.get(\"billingOnlineState\"));",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "0e10c1e3-a994-40b0-ad8b-4036d81b7870",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "{{token}}"
+					},
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "text/plain"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"accountDto\": {\r\n        \"basicData\": {\r\n            \"isCustomer\": {{isCustomer}},\r\n            \"isDealer\": {{isDealer}},\r\n            \"isLeaflet\": {{isLeaflet}},\r\n            \"isSupplier\": {{isSupplier}},\r\n            \"isSocialReason\": {{isSocialReason}},\r\n            \"isBank\": {{isBank}},\r\n            \"firstName\": \"{{firstName}}\",\r\n            \"lastName\": \"{{lastName}}\",\r\n            \"fullName\": \"{{fullName}}\",\r\n            \"idTypeCode\": {{idTypeCode}},\r\n            \"identification\": \"{{identification}}\",\r\n            \"checkDigit\": {{checkDigit}},\r\n            \"branchOffice\": {{branchOffice}},\r\n            \"taxClassificationCode\": {{taxClassificationCode}},\r\n            \"companyName\": \"{{companyName}}\",\r\n            \"webSite\": \"{{webSite}}\",\r\n            \"accountParentCode\": {{accountParentCode}},\r\n            \"address\": \"{{address}}\",\r\n            \"usersCode\": {{usersCode}},\r\n            \"city\": {{city}},\r\n            \"taxPersonTypeCode\": {{taxPersonTypeCode}},\r\n            \"businessActivityCode\": \"{{businessActivityCode}}\",\r\n            \"isAgentRetainer\": {{isAgentRetainer}},\r\n            \"isAgentAutoretainer\": {{isAgentAutoretainer}},\r\n            \"isDeclarant\": {{isDeclarant}},\r\n            \"isLocked\": {{isLocked}},\r\n            \"fax\": {\r\n                \"indicative\": \"{{faxindicative}}\",\r\n                \"number\": \"{{faxnumber}}\",\r\n                \"extention\": \"{{faxextention}}\"\r\n            },\r\n            \"phone\": [\r\n                {\r\n                    \"indicative\": \"{{phoneindicative}}\",\r\n                    \"number\": \"{{phonenumber}}\",\r\n                    \"extention\": \"{{phoneextention}}\"\r\n                }\r\n            ]\r\n        },\r\n        \"status\": {\r\n            \"isActive\": {{statusisActive}}\r\n        },\r\n        \"principalLocation\": {\r\n            \"email\": \"{{principalLocationemail}}\"\r\n        },\r\n        \"contacts\": [\r\n            {\r\n                \"firstName\": \"{{contactsfirstName}}\",\r\n                \"lastName\": \"{{contactslastName}}\",\r\n                \"officePhone\": [{\r\n                    \"indicative\": \"{{contactsofficePhoneIndicative}}\",\r\n                    \"number\": \"{{contactsofficePhoneNumber}}\",\r\n                    \"extention\": \"{{contactsofficePhoneExtention}}\"\r\n                }],\r\n                \"cellPhone\": [{\r\n                    \"indicative\": \"{{contactscellPhoneIndicative}}\",\r\n                    \"number\": \"{{contactscellPhoneNumber}}\",\r\n                    \"extention\": \"{{contactscellPhoneExtention}}\"\r\n                }],\r\n                \"email\": \"{{contactsemail}}\",\r\n                \"isPrincipal\": {{contactsisPrincipal}}\r\n            }\r\n        ],\r\n        \"segmentation\": {\r\n            \"accountRatingCode\": {{segmentationaccountRatingCode}},\r\n            \"sizeCode\": {{segmentationsizeCode}},\r\n            \"subEconomicSectorCode\": {{segmentationsubEconomicSectorCode}},\r\n            \"annualSaleCode\": {{segmentationannualSaleCode}},\r\n            \"employeeNumberCode\": {{segmentationemployeeNumberCode}}\r\n        },\r\n        \"relatedUsers\": {\r\n            \"directorId\": {{relatedUsersdirectorId}},\r\n            \"salesmanId\": {{relatedUserssalesmanId}},\r\n            \"distributorCode\": {{relatedUsersdistributorCode}}\r\n        },\r\n        \"collectorId\": {{collectorId}},\r\n        \"comments\": \"{{comments}}\",\r\n        \"postalCode\": \"{{postalCode}}\",\r\n        \"picture\": null,\r\n        \"fiscalResponsibilityCode\": \"{}\",\r\n        \"accountState\": {{accountState}},\r\n        \"foreignIdentification\": \"{{foreignIdentification}}\",\r\n        \"accountTypes\": \"{{accountTypes}}\",\r\n        \"accountSubStateCode\": {{accountSubStateCode}},\r\n        \"erpContactCode\": {{erpContactCode}},\r\n        \"commercialActivity\": {{commercialActivity}},\r\n        \"moneyCode\": \"{{moneyCode}}\",\r\n        \"eInvoiceReceiveType\": {{eInvoiceReceiveType}},\r\n        \"vatCompanyType\": {{vatCompanyType}},\r\n        \"acceptElectronicInvoice\": {{acceptElectronicInvoice}},\r\n        \"billingOnlineState\": {{billingOnlineState}},\r\n        \"freeFields\": [\r\n            {\r\n                \"name\": \"string\",\r\n                \"value\": \"string\"\r\n            }\r\n        ]\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}:5000/api/third-party/account",
+					"host": [
+						"{{url}}"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"third-party",
+						"account"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "03_create_mandatory_fields",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d8f3b1a9-4f54-4ff3-b3d5-292a04d2d02e",
+						"exec": [
+							"var jsonData = pm.response.json();",
+							"guid_value = jsonData.accountDto.guid",
+							"",
+							"pm.environment.set(\"guid\", guid_value);",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    console.log(\"Response time - Create Request: \"+pm.response.responseTime);",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.test(\"Verify third party first name\", function () {",
+							"    console.log(jsonData.accountDto.basicData.firstName);",
+							"    console.log(pm.variables.get(\"firstName\"));",
+							"    pm.expect(jsonData.accountDto.basicData.firstName).to.eql(pm.variables.get(\"firstName\"));",
+							"});",
+							"",
+							"pm.test(\"Verify third party lastname\", function () {",
+							"    console.log(jsonData.accountDto.basicData.lastName);",
+							"    console.log(pm.variables.get(\"lastName\"));",
+							"    pm.expect(jsonData.accountDto.basicData.lastName).to.eql(pm.variables.get(\"lastName\"));",
+							"});",
+							"",
+							"pm.test(\"Verify third party fullname\", function () {",
+							"    let name = jsonData.accountDto.basicData.firstName",
+							"    let lastname = jsonData.accountDto.basicData.lastName ",
+							"    let fullName = name + \" \" + lastname",
+							"    console.log(fullName);",
+							"    pm.expect(jsonData.accountDto.basicData.fullName).to.eql(fullName);",
+							"});",
+							"",
+							"pm.test(\"Verify third party identification\", function () {",
+							"    pm.expect(jsonData.accountDto.basicData.identification).to.eql(String(pm.variables.get(\"identification\")));",
+							"});",
+							"",
+							"pm.test(\"Verify third party address\", function () {",
+							"    pm.expect(jsonData.accountDto.basicData.address).to.eql(pm.variables.get(\"address\"));",
+							"});",
+							"",
+							"pm.test(\"Verify third party city\", function () {",
+							"    pm.expect(jsonData.accountDto.basicData.city).to.eql(pm.variables.get(\"city\"));",
+							"});",
+							"",
+							"pm.test(\"Verify third party contact email\", function () {",
+							"    pm.expect(jsonData.accountDto.contacts[0].email).to.eql(pm.variables.get(\"contactsemail\"));",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "0e10c1e3-a994-40b0-ad8b-4036d81b7870",
+						"exec": [
+							"console.log(pm.environment.get(\"var_code\"));",
+							"",
+							"console.log(pm.environment.get(\"lastName\"));",
+							"console.log(\"----- Datos request -----\");",
+							"console.log(pm.environment.get(\"var_code\"));",
+							"console.log(pm.environment.get(\"isVatCompanyType\"));",
+							"console.log(pm.environment.get(\"businessActivityCode \"));",
+							"console.log(pm.environment.get(\"faxindicative\"));",
+							"console.log(pm.environment.get(\"phoneindicative\"));",
+							"console.log(pm.environment.get(\"contactsfirstName\"));",
+							"console.log(pm.environment.get(\"principalLocationemail\"));"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "{{token}}"
+					},
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "text/plain"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"accountDto\": {\r\n        \"basicData\": {\r\n            \"isCustomer\": true,\r\n            \"isDealer\": false,\r\n            \"isLeaflet\": false,\r\n            \"isSupplier\": false,\r\n            \"isSocialReason\": true,\r\n            \"isBank\": false,\r\n            \"firstName\": \"{{firstName}}\",\r\n            \"lastName\": \"{{lastName}}\",\r\n            \"fullName\": null,\r\n            \"idTypeCode\": 75,\r\n            \"identification\": \"{{identification}}\",\r\n            \"checkDigit\": null,\r\n            \"branchOffice\": 1,\r\n            \"taxClassificationCode\": null,\r\n            \"companyName\": null,\r\n            \"webSite\": null,\r\n            \"accountParentCode\": 1,\r\n            \"address\": \"{{address}}\",\r\n            \"usersCode\": null,\r\n            \"city\": {{city}},\r\n            \"taxPersonTypeCode\": null,\r\n            \"businessActivityCode\": null,\r\n            \"isAgentRetainer\": null,\r\n            \"isAgentAutoretainer\": null,\r\n            \"isDeclarant\": null,\r\n            \"isLocked\": null,\r\n            \"fax\": {\r\n                \"indicative\": null,\r\n                \"number\": null,\r\n                \"extention\": null\r\n            },\r\n            \"phone\": [\r\n                {\r\n                    \"indicative\": \"{{phoneindicative}}\",\r\n                    \"number\": \"{{phonenumber}}\",\r\n                    \"extention\": null\r\n                }\r\n            ]\r\n        },\r\n        \"status\": {\r\n            \"isActive\": true\r\n        },\r\n        \"principalLocation\": {\r\n            \"email\": null\r\n        },\r\n        \"contacts\": [\r\n            {\r\n                \"firstName\": \"{{contactsfirstName}}\",\r\n                \"lastName\": \"{{contactslastName}}\",\r\n                \"officePhone\": [],\r\n                \"cellPhone\": [{\r\n                    \"indicative\": \"2\",\r\n                    \"number\": \"2\",\r\n                    \"extention\": null\r\n                }],\r\n                \"email\": \"{{contactsemail}}\",\r\n                \"isPrincipal\": true\r\n            }\r\n        ],\r\n        \"segmentation\": {\r\n            \"accountRatingCode\": null,\r\n            \"sizeCode\": null,\r\n            \"subEconomicSectorCode\": null,\r\n            \"annualSaleCode\": null,\r\n            \"employeeNumberCode\": null\r\n        },\r\n        \"relatedUsers\": {\r\n            \"directorId\": null,\r\n            \"salesmanId\": null,\r\n            \"distributorCode\": null\r\n        },\r\n        \"collectorId\": null,\r\n        \"comments\": null,\r\n        \"postalCode\": null,\r\n        \"picture\": null,\r\n        \"fiscalResponsibilityCode\": \"{}\",\r\n        \"accountState\": null,\r\n        \"foreignIdentification\": null,\r\n        \"accountTypes\": null,\r\n        \"accountSubStateCode\": null,\r\n        \"erpContactCode\": null,\r\n        \"commercialActivity\": null,\r\n        \"moneyCode\": null,\r\n        \"eInvoiceReceiveType\": null,\r\n        \"vatCompanyType\": 1,\r\n        \"acceptElectronicInvoice\": null,\r\n        \"billingOnlineState\": null,\r\n        \"freeFields\": [\r\n            {\r\n                \"name\": null,\r\n                \"value\": null\r\n            }\r\n        ]\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}:5000/api/third-party/account",
+					"host": [
+						"{{url}}"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"third-party",
+						"account"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "04_find",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "407a8352-7721-49d1-b80b-5a5a9071bb59",
+						"exec": [
+							"var jsonData = pm.response.json();",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 400ms\", function () {",
+							"    console.log(\"Response time - Find request: \"+pm.response.responseTime);",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"pm.test(\"Verify third party first name\", function () {",
+							"    console.log(jsonData.accountDto.basicData.firstName);",
+							"    pm.expect(jsonData.accountDto.basicData.firstName).to.eql(pm.variables.get(\"firstName\"));",
+							"});",
+							"",
+							"pm.test(\"Verify third party lastname\", function () {",
+							"    console.log(jsonData.accountDto.basicData.lastName);",
+							"    pm.expect(jsonData.accountDto.basicData.lastName).to.eql(pm.variables.get(\"lastName\"));",
+							"});",
+							"",
+							"pm.test(\"Verify third party fullname\", function () {",
+							"    let name = jsonData.accountDto.basicData.firstName;",
+							"    let lastname = jsonData.accountDto.basicData.lastName; ",
+							"    let fullName = name + \" \" + lastname;",
+							"    pm.expect(jsonData.accountDto.basicData.fullName).to.eql(fullName);",
+							"});",
+							"",
+							"pm.test(\"Verify third party identification\", function () {",
+							"    pm.expect(jsonData.accountDto.basicData.identification).to.eql(String(pm.variables.get(\"identification\")));",
+							"});",
+							"",
+							"pm.test(\"Verify third party address\", function () {",
+							"    pm.expect(jsonData.accountDto.basicData.address).to.eql(pm.variables.get(\"address\"));",
+							"});",
+							"",
+							"pm.test(\"Verify third party city\", function () {",
+							"    pm.expect(jsonData.accountDto.basicData.city).to.eql(pm.variables.get(\"city\"));",
+							"});",
+							"",
+							"pm.test(\"Verify third party contact email\", function () {",
+							"    pm.expect(jsonData.accountDto.contacts[0].email).to.eql(pm.variables.get(\"contactsemail\"));",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "{{token}}"
+					},
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "text/plain"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}:5000/api/third-party/account/{{guid}}",
+					"host": [
+						"{{url}}"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"third-party",
+						"account",
+						"{{guid}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
