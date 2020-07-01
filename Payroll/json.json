@@ -1,0 +1,2253 @@
+json
+{
+    "employeesData": [
+        {
+            "usersCode": "34424",
+            "identification": "11366507",
+            "contractCode": 2151,
+            "fullName": "JUAN1 ORLANDO PARDO BELTRAN",
+            "totalRevenue": "1128896",
+            "totalDeduction": "82084",
+            "totalNeto": "1046812",
+            "novelties": [
+                {
+                    "conceptCode": 105068,
+                    "conceptName": "[C_Salario]",
+                    "description": "Sueldo",
+                    "usersValue": "30",
+                    "valueType": 0,
+                    "value": "1000000",
+                    "natureType": 0,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105070,
+                    "conceptName": "[C_SubsidioTransporte]",
+                    "description": "Auxilio de transporte",
+                    "usersValue": "30",
+                    "valueType": 0,
+                    "value": "102854",
+                    "natureType": 0,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105067,
+                    "conceptName": "[C_HorasExtrasDiurnas125]",
+                    "description": "Horas extras diurnas 125%",
+                    "usersValue": "5",
+                    "valueType": 0,
+                    "value": "26042",
+                    "natureType": 0,
+                    "isDefault": false,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105050,
+                    "conceptName": "[C_FondoSalud]",
+                    "description": "Fondo de salud",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "41042",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105049,
+                    "conceptName": "[C_FondoPension]",
+                    "description": "Fondo de pensión",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "41042",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                }
+            ],
+            "calendarNovelties": []
+        },
+        {
+            "usersCode": "34466",
+            "identification": "16934849",
+            "contractCode": 2190,
+            "fullName": "MARIO ANDRES GAMBOA BERMEO",
+            "totalRevenue": "1102854",
+            "totalDeduction": "80000",
+            "totalNeto": "1022854",
+            "novelties": [
+                {
+                    "conceptCode": 105068,
+                    "conceptName": "[C_Salario]",
+                    "description": "Sueldo",
+                    "usersValue": "30",
+                    "valueType": 0,
+                    "value": "1000000",
+                    "natureType": 0,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105070,
+                    "conceptName": "[C_SubsidioTransporte]",
+                    "description": "Aux. de transporte/Aux. de conectividad digital",
+                    "usersValue": "30",
+                    "valueType": 0,
+                    "value": "102854",
+                    "natureType": 0,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105050,
+                    "conceptName": "[C_FondoSalud]",
+                    "description": "Fondo de salud",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "40000",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105049,
+                    "conceptName": "[C_FondoPension]",
+                    "description": "Fondo de pensión",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "40000",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                }
+            ],
+            "calendarNovelties": []
+        },
+        {
+            "usersCode": "34432",
+            "identification": "17344630",
+            "contractCode": 2159,
+            "fullName": "aLIRIO SaNaBrIa",
+            "totalRevenue": "1102854",
+            "totalDeduction": "80000",
+            "totalNeto": "1022854",
+            "novelties": [
+                {
+                    "conceptCode": 105068,
+                    "conceptName": "[C_Salario]",
+                    "description": "Sueldo",
+                    "usersValue": "30",
+                    "valueType": 0,
+                    "value": "1000000",
+                    "natureType": 0,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105070,
+                    "conceptName": "[C_SubsidioTransporte]",
+                    "description": "Aux. de transporte/Aux. de conectividad digital",
+                    "usersValue": "30",
+                    "valueType": 0,
+                    "value": "102854",
+                    "natureType": 0,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105050,
+                    "conceptName": "[C_FondoSalud]",
+                    "description": "Fondo de salud",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "40000",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105049,
+                    "conceptName": "[C_FondoPension]",
+                    "description": "Fondo de pensión",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "40000",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                }
+            ],
+            "calendarNovelties": []
+        },
+        {
+            "usersCode": "34433",
+            "identification": "17345090",
+            "contractCode": 2160,
+            "fullName": "HECTOR JAVIER ROJAS",
+            "totalRevenue": "1102854",
+            "totalDeduction": "80000",
+            "totalNeto": "1022854",
+            "novelties": [
+                {
+                    "conceptCode": 105068,
+                    "conceptName": "[C_Salario]",
+                    "description": "Sueldo",
+                    "usersValue": "30",
+                    "valueType": 0,
+                    "value": "1000000",
+                    "natureType": 0,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105070,
+                    "conceptName": "[C_SubsidioTransporte]",
+                    "description": "Aux. de transporte/Aux. de conectividad digital",
+                    "usersValue": "30",
+                    "valueType": 0,
+                    "value": "102854",
+                    "natureType": 0,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105050,
+                    "conceptName": "[C_FondoSalud]",
+                    "description": "Fondo de salud",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "40000",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105049,
+                    "conceptName": "[C_FondoPension]",
+                    "description": "Fondo de pensión",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "40000",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                }
+            ],
+            "calendarNovelties": []
+        },
+        {
+            "usersCode": "34434",
+            "identification": "17546920",
+            "contractCode": 2161,
+            "fullName": "OVIDIO GOMEZ GARCIA",
+            "totalRevenue": "1102854",
+            "totalDeduction": "56000",
+            "totalNeto": "1046854",
+            "novelties": [
+                {
+                    "conceptCode": 105131,
+                    "conceptName": "[C_SalarioIntegral]",
+                    "description": "Salario Integral",
+                    "usersValue": "30",
+                    "valueType": 0,
+                    "value": "1000000",
+                    "natureType": 0,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105070,
+                    "conceptName": "[C_SubsidioTransporte]",
+                    "description": "Aux. de transporte/Aux. de conectividad digital",
+                    "usersValue": "30",
+                    "valueType": 0,
+                    "value": "102854",
+                    "natureType": 0,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105050,
+                    "conceptName": "[C_FondoSalud]",
+                    "description": "Fondo de salud",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "28000",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105049,
+                    "conceptName": "[C_FondoPension]",
+                    "description": "Fondo de pensión",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "28000",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                }
+            ],
+            "calendarNovelties": []
+        },
+        {
+            "usersCode": "34435",
+            "identification": "18144198",
+            "contractCode": 2162,
+            "fullName": "CARLOS ALFONSO MATA",
+            "totalRevenue": "1000000",
+            "totalDeduction": "0",
+            "totalNeto": "1000000",
+            "novelties": [
+                {
+                    "conceptCode": 105069,
+                    "conceptName": "[C_CuotaSostenimiento]",
+                    "description": "Cuota de sostenimiento",
+                    "usersValue": "30",
+                    "valueType": 0,
+                    "value": "1000000",
+                    "natureType": 0,
+                    "isDefault": true,
+                    "factor": null
+                }
+            ],
+            "calendarNovelties": []
+        },
+        {
+            "usersCode": "34436",
+            "identification": "18145489",
+            "contractCode": 2163,
+            "fullName": "LUIS FELIPE VILLOTA",
+            "totalRevenue": "1102854",
+            "totalDeduction": "80000",
+            "totalNeto": "1022854",
+            "novelties": [
+                {
+                    "conceptCode": 105068,
+                    "conceptName": "[C_Salario]",
+                    "description": "Sueldo",
+                    "usersValue": "30",
+                    "valueType": 0,
+                    "value": "1000000",
+                    "natureType": 0,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105070,
+                    "conceptName": "[C_SubsidioTransporte]",
+                    "description": "Aux. de transporte/Aux. de conectividad digital",
+                    "usersValue": "30",
+                    "valueType": 0,
+                    "value": "102854",
+                    "natureType": 0,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105050,
+                    "conceptName": "[C_FondoSalud]",
+                    "description": "Fondo de salud",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "40000",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105049,
+                    "conceptName": "[C_FondoPension]",
+                    "description": "Fondo de pensión",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "40000",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                }
+            ],
+            "calendarNovelties": []
+        },
+        {
+            "usersCode": "34437",
+            "identification": "18146149",
+            "contractCode": 2164,
+            "fullName": "ORLANDO LEONEL GAVIRIA LOPEZ",
+            "totalRevenue": "1102854",
+            "totalDeduction": "80000",
+            "totalNeto": "1022854",
+            "novelties": [
+                {
+                    "conceptCode": 105068,
+                    "conceptName": "[C_Salario]",
+                    "description": "Sueldo",
+                    "usersValue": "30",
+                    "valueType": 0,
+                    "value": "1000000",
+                    "natureType": 0,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105070,
+                    "conceptName": "[C_SubsidioTransporte]",
+                    "description": "Aux. de transporte/Aux. de conectividad digital",
+                    "usersValue": "30",
+                    "valueType": 0,
+                    "value": "102854",
+                    "natureType": 0,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105050,
+                    "conceptName": "[C_FondoSalud]",
+                    "description": "Fondo de salud",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "40000",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105049,
+                    "conceptName": "[C_FondoPension]",
+                    "description": "Fondo de pensión",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "40000",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                }
+            ],
+            "calendarNovelties": []
+        },
+        {
+            "usersCode": "34438",
+            "identification": "18147296",
+            "contractCode": 2165,
+            "fullName": "HUGO ANDRES SALAZAR",
+            "totalRevenue": "2000000",
+            "totalDeduction": "160000",
+            "totalNeto": "1840000",
+            "novelties": [
+                {
+                    "conceptCode": 105068,
+                    "conceptName": "[C_Salario]",
+                    "description": "Sueldo",
+                    "usersValue": "30",
+                    "valueType": 0,
+                    "value": "2000000",
+                    "natureType": 0,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105050,
+                    "conceptName": "[C_FondoSalud]",
+                    "description": "Fondo de salud",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "80000",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105049,
+                    "conceptName": "[C_FondoPension]",
+                    "description": "Fondo de pensión",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "80000",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                }
+            ],
+            "calendarNovelties": []
+        },
+        {
+            "usersCode": "34439",
+            "identification": "19772116",
+            "contractCode": 2166,
+            "fullName": "WASHINTON HERRERA CAMACHO",
+            "totalRevenue": "13000000",
+            "totalDeduction": "2630576",
+            "totalNeto": "10369424",
+            "novelties": [
+                {
+                    "conceptCode": 105068,
+                    "conceptName": "[C_Salario]",
+                    "description": "Sueldo",
+                    "usersValue": "30",
+                    "valueType": 0,
+                    "value": "13000000",
+                    "natureType": 0,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105050,
+                    "conceptName": "[C_FondoSalud]",
+                    "description": "Fondo de salud",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "520000",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105049,
+                    "conceptName": "[C_FondoPension]",
+                    "description": "Fondo de pensión",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "520000",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105099,
+                    "conceptName": "[C_Retefuente]",
+                    "description": "Retefuente",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "1590576",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                }
+            ],
+            "calendarNovelties": []
+        },
+        {
+            "usersCode": "34440",
+            "identification": "23913269",
+            "contractCode": 2167,
+            "fullName": "OLGA MARIA ESTUPIÑAN ESTUPIÑAN",
+            "totalRevenue": "1102854",
+            "totalDeduction": "80000",
+            "totalNeto": "1022854",
+            "novelties": [
+                {
+                    "conceptCode": 105068,
+                    "conceptName": "[C_Salario]",
+                    "description": "Sueldo",
+                    "usersValue": "30",
+                    "valueType": 0,
+                    "value": "1000000",
+                    "natureType": 0,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105070,
+                    "conceptName": "[C_SubsidioTransporte]",
+                    "description": "Aux. de transporte/Aux. de conectividad digital",
+                    "usersValue": "30",
+                    "valueType": 0,
+                    "value": "102854",
+                    "natureType": 0,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105050,
+                    "conceptName": "[C_FondoSalud]",
+                    "description": "Fondo de salud",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "40000",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105049,
+                    "conceptName": "[C_FondoPension]",
+                    "description": "Fondo de pensión",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "40000",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                }
+            ],
+            "calendarNovelties": []
+        },
+        {
+            "usersCode": "34425",
+            "identification": "12130411",
+            "contractCode": 2152,
+            "fullName": "EIDER GRANADOS HERRERA",
+            "totalRevenue": "1102854",
+            "totalDeduction": "80000",
+            "totalNeto": "1022854",
+            "novelties": [
+                {
+                    "conceptCode": 105068,
+                    "conceptName": "[C_Salario]",
+                    "description": "Sueldo",
+                    "usersValue": "30",
+                    "valueType": 0,
+                    "value": "1000000",
+                    "natureType": 0,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105070,
+                    "conceptName": "[C_SubsidioTransporte]",
+                    "description": "Aux. de transporte/Aux. de conectividad digital",
+                    "usersValue": "30",
+                    "valueType": 0,
+                    "value": "102854",
+                    "natureType": 0,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105050,
+                    "conceptName": "[C_FondoSalud]",
+                    "description": "Fondo de salud",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "40000",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105049,
+                    "conceptName": "[C_FondoPension]",
+                    "description": "Fondo de pensión",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "40000",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                }
+            ],
+            "calendarNovelties": []
+        },
+        {
+            "usersCode": "34441",
+            "identification": "26607614",
+            "contractCode": 2168,
+            "fullName": "YUSBENI CERQUERA",
+            "totalRevenue": "1102854",
+            "totalDeduction": "80000",
+            "totalNeto": "1022854",
+            "novelties": [
+                {
+                    "conceptCode": 105068,
+                    "conceptName": "[C_Salario]",
+                    "description": "Sueldo",
+                    "usersValue": "30",
+                    "valueType": 0,
+                    "value": "1000000",
+                    "natureType": 0,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105070,
+                    "conceptName": "[C_SubsidioTransporte]",
+                    "description": "Aux. de transporte/Aux. de conectividad digital",
+                    "usersValue": "30",
+                    "valueType": 0,
+                    "value": "102854",
+                    "natureType": 0,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105050,
+                    "conceptName": "[C_FondoSalud]",
+                    "description": "Fondo de salud",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "40000",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105049,
+                    "conceptName": "[C_FondoPension]",
+                    "description": "Fondo de pensión",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "40000",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                }
+            ],
+            "calendarNovelties": []
+        },
+        {
+            "usersCode": "34442",
+            "identification": "27399910",
+            "contractCode": 2169,
+            "fullName": "OLINDA CABEZAS",
+            "totalRevenue": "1102854",
+            "totalDeduction": "80000",
+            "totalNeto": "1022854",
+            "novelties": [
+                {
+                    "conceptCode": 105068,
+                    "conceptName": "[C_Salario]",
+                    "description": "Sueldo",
+                    "usersValue": "30",
+                    "valueType": 0,
+                    "value": "1000000",
+                    "natureType": 0,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105070,
+                    "conceptName": "[C_SubsidioTransporte]",
+                    "description": "Aux. de transporte/Aux. de conectividad digital",
+                    "usersValue": "30",
+                    "valueType": 0,
+                    "value": "102854",
+                    "natureType": 0,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105050,
+                    "conceptName": "[C_FondoSalud]",
+                    "description": "Fondo de salud",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "40000",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105049,
+                    "conceptName": "[C_FondoPension]",
+                    "description": "Fondo de pensión",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "40000",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                }
+            ],
+            "calendarNovelties": []
+        },
+        {
+            "usersCode": "34443",
+            "identification": "32786877",
+            "contractCode": 2170,
+            "fullName": "BELQUIS TRILLOS",
+            "totalRevenue": "1102854",
+            "totalDeduction": "80000",
+            "totalNeto": "1022854",
+            "novelties": [
+                {
+                    "conceptCode": 105068,
+                    "conceptName": "[C_Salario]",
+                    "description": "Sueldo",
+                    "usersValue": "30",
+                    "valueType": 0,
+                    "value": "1000000",
+                    "natureType": 0,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105070,
+                    "conceptName": "[C_SubsidioTransporte]",
+                    "description": "Aux. de transporte/Aux. de conectividad digital",
+                    "usersValue": "30",
+                    "valueType": 0,
+                    "value": "102854",
+                    "natureType": 0,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105050,
+                    "conceptName": "[C_FondoSalud]",
+                    "description": "Fondo de salud",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "40000",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105049,
+                    "conceptName": "[C_FondoPension]",
+                    "description": "Fondo de pensión",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "40000",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                }
+            ],
+            "calendarNovelties": []
+        },
+        {
+            "usersCode": "34444",
+            "identification": "32939819",
+            "contractCode": 2171,
+            "fullName": "MILENA DEL CARMEN CONSUEGRA",
+            "totalRevenue": "1102854",
+            "totalDeduction": "80000",
+            "totalNeto": "1022854",
+            "novelties": [
+                {
+                    "conceptCode": 105068,
+                    "conceptName": "[C_Salario]",
+                    "description": "Sueldo",
+                    "usersValue": "30",
+                    "valueType": 0,
+                    "value": "1000000",
+                    "natureType": 0,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105070,
+                    "conceptName": "[C_SubsidioTransporte]",
+                    "description": "Aux. de transporte/Aux. de conectividad digital",
+                    "usersValue": "30",
+                    "valueType": 0,
+                    "value": "102854",
+                    "natureType": 0,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105050,
+                    "conceptName": "[C_FondoSalud]",
+                    "description": "Fondo de salud",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "40000",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105049,
+                    "conceptName": "[C_FondoPension]",
+                    "description": "Fondo de pensión",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "40000",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                }
+            ],
+            "calendarNovelties": []
+        },
+        {
+            "usersCode": "34445",
+            "identification": "34570101",
+            "contractCode": 2172,
+            "fullName": "MARILUT DIAZ HURTADO",
+            "totalRevenue": "1900000",
+            "totalDeduction": "152000",
+            "totalNeto": "1748000",
+            "novelties": [
+                {
+                    "conceptCode": 105068,
+                    "conceptName": "[C_Salario]",
+                    "description": "Sueldo",
+                    "usersValue": "30",
+                    "valueType": 0,
+                    "value": "1900000",
+                    "natureType": 0,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105050,
+                    "conceptName": "[C_FondoSalud]",
+                    "description": "Fondo de salud",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "76000",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105049,
+                    "conceptName": "[C_FondoPension]",
+                    "description": "Fondo de pensión",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "76000",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                }
+            ],
+            "calendarNovelties": []
+        },
+        {
+            "usersCode": "34446",
+            "identification": "36287917",
+            "contractCode": 2173,
+            "fullName": "ANA MILENA VARGAS MUÑOZ",
+            "totalRevenue": "1102854",
+            "totalDeduction": "80000",
+            "totalNeto": "1022854",
+            "novelties": [
+                {
+                    "conceptCode": 105068,
+                    "conceptName": "[C_Salario]",
+                    "description": "Sueldo",
+                    "usersValue": "30",
+                    "valueType": 0,
+                    "value": "1000000",
+                    "natureType": 0,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105070,
+                    "conceptName": "[C_SubsidioTransporte]",
+                    "description": "Aux. de transporte/Aux. de conectividad digital",
+                    "usersValue": "30",
+                    "valueType": 0,
+                    "value": "102854",
+                    "natureType": 0,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105050,
+                    "conceptName": "[C_FondoSalud]",
+                    "description": "Fondo de salud",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "40000",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105049,
+                    "conceptName": "[C_FondoPension]",
+                    "description": "Fondo de pensión",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "40000",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                }
+            ],
+            "calendarNovelties": []
+        },
+        {
+            "usersCode": "34447",
+            "identification": "41170691",
+            "contractCode": 2174,
+            "fullName": "MARY CRUZ CORAL SALCEDO",
+            "totalRevenue": "1900000",
+            "totalDeduction": "152000",
+            "totalNeto": "1748000",
+            "novelties": [
+                {
+                    "conceptCode": 105068,
+                    "conceptName": "[C_Salario]",
+                    "description": "Sueldo",
+                    "usersValue": "30",
+                    "valueType": 0,
+                    "value": "1900000",
+                    "natureType": 0,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105050,
+                    "conceptName": "[C_FondoSalud]",
+                    "description": "Fondo de salud",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "76000",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105049,
+                    "conceptName": "[C_FondoPension]",
+                    "description": "Fondo de pensión",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "76000",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                }
+            ],
+            "calendarNovelties": []
+        },
+        {
+            "usersCode": "34448",
+            "identification": "45465017",
+            "contractCode": 2175,
+            "fullName": "KATIA MARTINEZ ESCOBAR",
+            "totalRevenue": "1102854",
+            "totalDeduction": "80000",
+            "totalNeto": "1022854",
+            "novelties": [
+                {
+                    "conceptCode": 105068,
+                    "conceptName": "[C_Salario]",
+                    "description": "Sueldo",
+                    "usersValue": "30",
+                    "valueType": 0,
+                    "value": "1000000",
+                    "natureType": 0,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105070,
+                    "conceptName": "[C_SubsidioTransporte]",
+                    "description": "Aux. de transporte/Aux. de conectividad digital",
+                    "usersValue": "30",
+                    "valueType": 0,
+                    "value": "102854",
+                    "natureType": 0,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105050,
+                    "conceptName": "[C_FondoSalud]",
+                    "description": "Fondo de salud",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "40000",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105049,
+                    "conceptName": "[C_FondoPension]",
+                    "description": "Fondo de pensión",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "40000",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                }
+            ],
+            "calendarNovelties": []
+        },
+        {
+            "usersCode": "34449",
+            "identification": "45586506",
+            "contractCode": 2176,
+            "fullName": "DAILESTER GARCIA MENDOZA",
+            "totalRevenue": "1900000",
+            "totalDeduction": "152000",
+            "totalNeto": "1748000",
+            "novelties": [
+                {
+                    "conceptCode": 105068,
+                    "conceptName": "[C_Salario]",
+                    "description": "Sueldo",
+                    "usersValue": "30",
+                    "valueType": 0,
+                    "value": "1900000",
+                    "natureType": 0,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105050,
+                    "conceptName": "[C_FondoSalud]",
+                    "description": "Fondo de salud",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "76000",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105049,
+                    "conceptName": "[C_FondoPension]",
+                    "description": "Fondo de pensión",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "76000",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                }
+            ],
+            "calendarNovelties": []
+        },
+        {
+            "usersCode": "34450",
+            "identification": "52780607",
+            "contractCode": 2177,
+            "fullName": "LEONOR ROCIO POLO TORRES",
+            "totalRevenue": "1102854",
+            "totalDeduction": "80000",
+            "totalNeto": "1022854",
+            "novelties": [
+                {
+                    "conceptCode": 105068,
+                    "conceptName": "[C_Salario]",
+                    "description": "Sueldo",
+                    "usersValue": "30",
+                    "valueType": 0,
+                    "value": "1000000",
+                    "natureType": 0,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105070,
+                    "conceptName": "[C_SubsidioTransporte]",
+                    "description": "Aux. de transporte/Aux. de conectividad digital",
+                    "usersValue": "30",
+                    "valueType": 0,
+                    "value": "102854",
+                    "natureType": 0,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105050,
+                    "conceptName": "[C_FondoSalud]",
+                    "description": "Fondo de salud",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "40000",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105049,
+                    "conceptName": "[C_FondoPension]",
+                    "description": "Fondo de pensión",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "40000",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                }
+            ],
+            "calendarNovelties": []
+        },
+        {
+            "usersCode": "34426",
+            "identification": "12193547",
+            "contractCode": 2153,
+            "fullName": "WILSON CAICEDO",
+            "totalRevenue": "1102854",
+            "totalDeduction": "80000",
+            "totalNeto": "1022854",
+            "novelties": [
+                {
+                    "conceptCode": 105068,
+                    "conceptName": "[C_Salario]",
+                    "description": "Sueldo",
+                    "usersValue": "30",
+                    "valueType": 0,
+                    "value": "1000000",
+                    "natureType": 0,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105070,
+                    "conceptName": "[C_SubsidioTransporte]",
+                    "description": "Aux. de transporte/Aux. de conectividad digital",
+                    "usersValue": "30",
+                    "valueType": 0,
+                    "value": "102854",
+                    "natureType": 0,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105050,
+                    "conceptName": "[C_FondoSalud]",
+                    "description": "Fondo de salud",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "40000",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105049,
+                    "conceptName": "[C_FondoPension]",
+                    "description": "Fondo de pensión",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "40000",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                }
+            ],
+            "calendarNovelties": []
+        },
+        {
+            "usersCode": "34451",
+            "identification": "52951911",
+            "contractCode": 2178,
+            "fullName": "MERY ROCIO NIÑO BELTRAN",
+            "totalRevenue": "1900000",
+            "totalDeduction": "152000",
+            "totalNeto": "1748000",
+            "novelties": [
+                {
+                    "conceptCode": 105068,
+                    "conceptName": "[C_Salario]",
+                    "description": "Sueldo",
+                    "usersValue": "30",
+                    "valueType": 0,
+                    "value": "1900000",
+                    "natureType": 0,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105050,
+                    "conceptName": "[C_FondoSalud]",
+                    "description": "Fondo de salud",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "76000",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105049,
+                    "conceptName": "[C_FondoPension]",
+                    "description": "Fondo de pensión",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "76000",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                }
+            ],
+            "calendarNovelties": []
+        },
+        {
+            "usersCode": "34452",
+            "identification": "55165958",
+            "contractCode": 2179,
+            "fullName": "MARIA DEYANIRA MENDEZ",
+            "totalRevenue": "1102854",
+            "totalDeduction": "80000",
+            "totalNeto": "1022854",
+            "novelties": [
+                {
+                    "conceptCode": 105068,
+                    "conceptName": "[C_Salario]",
+                    "description": "Sueldo",
+                    "usersValue": "30",
+                    "valueType": 0,
+                    "value": "1000000",
+                    "natureType": 0,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105070,
+                    "conceptName": "[C_SubsidioTransporte]",
+                    "description": "Aux. de transporte/Aux. de conectividad digital",
+                    "usersValue": "30",
+                    "valueType": 0,
+                    "value": "102854",
+                    "natureType": 0,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105050,
+                    "conceptName": "[C_FondoSalud]",
+                    "description": "Fondo de salud",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "40000",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105049,
+                    "conceptName": "[C_FondoPension]",
+                    "description": "Fondo de pensión",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "40000",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                }
+            ],
+            "calendarNovelties": []
+        },
+        {
+            "usersCode": "34453",
+            "identification": "55190742",
+            "contractCode": 2180,
+            "fullName": "LUZ ANGELA POLANIA TORRES",
+            "totalRevenue": "1900000",
+            "totalDeduction": "152000",
+            "totalNeto": "1748000",
+            "novelties": [
+                {
+                    "conceptCode": 105068,
+                    "conceptName": "[C_Salario]",
+                    "description": "Sueldo",
+                    "usersValue": "30",
+                    "valueType": 0,
+                    "value": "1900000",
+                    "natureType": 0,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105050,
+                    "conceptName": "[C_FondoSalud]",
+                    "description": "Fondo de salud",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "76000",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105049,
+                    "conceptName": "[C_FondoPension]",
+                    "description": "Fondo de pensión",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "76000",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                }
+            ],
+            "calendarNovelties": []
+        },
+        {
+            "usersCode": "34454",
+            "identification": "1001867654",
+            "contractCode": 2181,
+            "fullName": "MARIA ALEJANDRA VARGAS ARAUJO",
+            "totalRevenue": "1102854",
+            "totalDeduction": "80000",
+            "totalNeto": "1022854",
+            "novelties": [
+                {
+                    "conceptCode": 105068,
+                    "conceptName": "[C_Salario]",
+                    "description": "Sueldo",
+                    "usersValue": "30",
+                    "valueType": 0,
+                    "value": "1000000",
+                    "natureType": 0,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105070,
+                    "conceptName": "[C_SubsidioTransporte]",
+                    "description": "Aux. de transporte/Aux. de conectividad digital",
+                    "usersValue": "30",
+                    "valueType": 0,
+                    "value": "102854",
+                    "natureType": 0,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105050,
+                    "conceptName": "[C_FondoSalud]",
+                    "description": "Fondo de salud",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "40000",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105049,
+                    "conceptName": "[C_FondoPension]",
+                    "description": "Fondo de pensión",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "40000",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                }
+            ],
+            "calendarNovelties": []
+        },
+        {
+            "usersCode": "34456",
+            "identification": "1010222995",
+            "contractCode": 2183,
+            "fullName": "ANGELA JOHANNA CHOCONTA TORRES",
+            "totalRevenue": "1102854",
+            "totalDeduction": "80000",
+            "totalNeto": "1022854",
+            "novelties": [
+                {
+                    "conceptCode": 105068,
+                    "conceptName": "[C_Salario]",
+                    "description": "Sueldo",
+                    "usersValue": "30",
+                    "valueType": 0,
+                    "value": "1000000",
+                    "natureType": 0,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105070,
+                    "conceptName": "[C_SubsidioTransporte]",
+                    "description": "Aux. de transporte/Aux. de conectividad digital",
+                    "usersValue": "30",
+                    "valueType": 0,
+                    "value": "102854",
+                    "natureType": 0,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105050,
+                    "conceptName": "[C_FondoSalud]",
+                    "description": "Fondo de salud",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "40000",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105049,
+                    "conceptName": "[C_FondoPension]",
+                    "description": "Fondo de pensión",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "40000",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                }
+            ],
+            "calendarNovelties": []
+        },
+        {
+            "usersCode": "34457",
+            "identification": "1013652757",
+            "contractCode": 2184,
+            "fullName": "JUAN ESTEBAN CASTRO RODRIGUEZ",
+            "totalRevenue": "3511212",
+            "totalDeduction": "280896",
+            "totalNeto": "3230316",
+            "novelties": [
+                {
+                    "conceptCode": 105068,
+                    "conceptName": "[C_Salario]",
+                    "description": "Sueldo",
+                    "usersValue": "30",
+                    "valueType": 0,
+                    "value": "3511212",
+                    "natureType": 0,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105050,
+                    "conceptName": "[C_FondoSalud]",
+                    "description": "Fondo de salud",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "140448",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105049,
+                    "conceptName": "[C_FondoPension]",
+                    "description": "Fondo de pensión",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "140448",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                }
+            ],
+            "calendarNovelties": []
+        },
+        {
+            "usersCode": "34458",
+            "identification": "1015996035",
+            "contractCode": 2185,
+            "fullName": "KELLY MALENA PEREZ SUAREZ",
+            "totalRevenue": "14044848",
+            "totalDeduction": "2933582",
+            "totalNeto": "11111266",
+            "novelties": [
+                {
+                    "conceptCode": 105068,
+                    "conceptName": "[C_Salario]",
+                    "description": "Sueldo",
+                    "usersValue": "30",
+                    "valueType": 0,
+                    "value": "14044848",
+                    "natureType": 0,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105050,
+                    "conceptName": "[C_FondoSalud]",
+                    "description": "Fondo de salud",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "561794",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105049,
+                    "conceptName": "[C_FondoPension]",
+                    "description": "Fondo de pensión",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "561794",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105099,
+                    "conceptName": "[C_Retefuente]",
+                    "description": "Retefuente",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "1809994",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                }
+            ],
+            "calendarNovelties": []
+        },
+        {
+            "usersCode": "34459",
+            "identification": "1015996845",
+            "contractCode": 2186,
+            "fullName": "ANGELA MORENO GARAVITO",
+            "totalRevenue": "15800500",
+            "totalDeduction": "3442721",
+            "totalNeto": "12357779",
+            "novelties": [
+                {
+                    "conceptCode": 105068,
+                    "conceptName": "[C_Salario]",
+                    "description": "Sueldo",
+                    "usersValue": "30",
+                    "valueType": 0,
+                    "value": "15800500",
+                    "natureType": 0,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105050,
+                    "conceptName": "[C_FondoSalud]",
+                    "description": "Fondo de salud",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "632020",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105049,
+                    "conceptName": "[C_FondoPension]",
+                    "description": "Fondo de pensión",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "632020",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105099,
+                    "conceptName": "[C_Retefuente]",
+                    "description": "Retefuente",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "2178681",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                }
+            ],
+            "calendarNovelties": []
+        },
+        {
+            "usersCode": "34460",
+            "identification": "1016097775",
+            "contractCode": 2187,
+            "fullName": "KAREN YISED GAONA CARDENAS",
+            "totalRevenue": "16679000",
+            "totalDeduction": "3697486",
+            "totalNeto": "12981514",
+            "novelties": [
+                {
+                    "conceptCode": 105068,
+                    "conceptName": "[C_Salario]",
+                    "description": "Sueldo",
+                    "usersValue": "30",
+                    "valueType": 0,
+                    "value": "16679000",
+                    "natureType": 0,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105050,
+                    "conceptName": "[C_FondoSalud]",
+                    "description": "Fondo de salud",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "667160",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105049,
+                    "conceptName": "[C_FondoPension]",
+                    "description": "Fondo de pensión",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "667160",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105099,
+                    "conceptName": "[C_Retefuente]",
+                    "description": "Retefuente",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "2363166",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                }
+            ],
+            "calendarNovelties": []
+        },
+        {
+            "usersCode": "34465",
+            "identification": "12196014",
+            "contractCode": 2189,
+            "fullName": "ERVI CAICEDO SIERRA",
+            "totalRevenue": "1102854",
+            "totalDeduction": "80000",
+            "totalNeto": "1022854",
+            "novelties": [
+                {
+                    "conceptCode": 105068,
+                    "conceptName": "[C_Salario]",
+                    "description": "Sueldo",
+                    "usersValue": "30",
+                    "valueType": 0,
+                    "value": "1000000",
+                    "natureType": 0,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105070,
+                    "conceptName": "[C_SubsidioTransporte]",
+                    "description": "Aux. de transporte/Aux. de conectividad digital",
+                    "usersValue": "30",
+                    "valueType": 0,
+                    "value": "102854",
+                    "natureType": 0,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105050,
+                    "conceptName": "[C_FondoSalud]",
+                    "description": "Fondo de salud",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "40000",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105049,
+                    "conceptName": "[C_FondoPension]",
+                    "description": "Fondo de pensión",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "40000",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                }
+            ],
+            "calendarNovelties": []
+        },
+        {
+            "usersCode": "34461",
+            "identification": "1018409643",
+            "contractCode": 2188,
+            "fullName": "FADHUL YAVER QUINTERO",
+            "totalRevenue": "22000000",
+            "totalDeduction": "5427377",
+            "totalNeto": "16572623",
+            "novelties": [
+                {
+                    "conceptCode": 105068,
+                    "conceptName": "[C_Salario]",
+                    "description": "Sueldo",
+                    "usersValue": "30",
+                    "valueType": 0,
+                    "value": "22000000",
+                    "natureType": 0,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105050,
+                    "conceptName": "[C_FondoSalud]",
+                    "description": "Fondo de salud",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "877803",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105049,
+                    "conceptName": "[C_FondoPension]",
+                    "description": "Fondo de pensión",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "877803",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105099,
+                    "conceptName": "[C_Retefuente]",
+                    "description": "Retefuente",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "3671771",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                }
+            ],
+            "calendarNovelties": []
+        },
+        {
+            "usersCode": "34467",
+            "identification": "1019131090",
+            "contractCode": 2191,
+            "fullName": "ALEXANDRA CORTES",
+            "totalRevenue": "1102854",
+            "totalDeduction": "80000",
+            "totalNeto": "1022854",
+            "novelties": [
+                {
+                    "conceptCode": 105068,
+                    "conceptName": "[C_Salario]",
+                    "description": "Sueldo",
+                    "usersValue": "30",
+                    "valueType": 0,
+                    "value": "1000000",
+                    "natureType": 0,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105070,
+                    "conceptName": "[C_SubsidioTransporte]",
+                    "description": "Aux. de transporte/Aux. de conectividad digital",
+                    "usersValue": "30",
+                    "valueType": 0,
+                    "value": "102854",
+                    "natureType": 0,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105050,
+                    "conceptName": "[C_FondoSalud]",
+                    "description": "Fondo de salud",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "40000",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105049,
+                    "conceptName": "[C_FondoPension]",
+                    "description": "Fondo de pensión",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "40000",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                }
+            ],
+            "calendarNovelties": []
+        },
+        {
+            "usersCode": "34469",
+            "identification": "1020761789",
+            "contractCode": 2193,
+            "fullName": "CARLOS DIAZ",
+            "totalRevenue": "1900000",
+            "totalDeduction": "152000",
+            "totalNeto": "1748000",
+            "novelties": [
+                {
+                    "conceptCode": 105068,
+                    "conceptName": "[C_Salario]",
+                    "description": "Sueldo",
+                    "usersValue": "30",
+                    "valueType": 0,
+                    "value": "1900000",
+                    "natureType": 0,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105050,
+                    "conceptName": "[C_FondoSalud]",
+                    "description": "Fondo de salud",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "76000",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105049,
+                    "conceptName": "[C_FondoPension]",
+                    "description": "Fondo de pensión",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "76000",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                }
+            ],
+            "calendarNovelties": []
+        },
+        {
+            "usersCode": "34427",
+            "identification": "12196168",
+            "contractCode": 2154,
+            "fullName": "IÑAQUI FAGÜA MONGÜI DE LA HOZ",
+            "totalRevenue": "1102854",
+            "totalDeduction": "80000",
+            "totalNeto": "1022854",
+            "novelties": [
+                {
+                    "conceptCode": 105068,
+                    "conceptName": "[C_Salario]",
+                    "description": "Sueldo",
+                    "usersValue": "30",
+                    "valueType": 0,
+                    "value": "1000000",
+                    "natureType": 0,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105070,
+                    "conceptName": "[C_SubsidioTransporte]",
+                    "description": "Aux. de transporte/Aux. de conectividad digital",
+                    "usersValue": "30",
+                    "valueType": 0,
+                    "value": "102854",
+                    "natureType": 0,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105050,
+                    "conceptName": "[C_FondoSalud]",
+                    "description": "Fondo de salud",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "40000",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105049,
+                    "conceptName": "[C_FondoPension]",
+                    "description": "Fondo de pensión",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "40000",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                }
+            ],
+            "calendarNovelties": []
+        },
+        {
+            "usersCode": "34428",
+            "identification": "12196888",
+            "contractCode": 2155,
+            "fullName": "ÉRNESTO LOPÉZ ESCARPETA",
+            "totalRevenue": "1102854",
+            "totalDeduction": "80000",
+            "totalNeto": "1022854",
+            "novelties": [
+                {
+                    "conceptCode": 105068,
+                    "conceptName": "[C_Salario]",
+                    "description": "Sueldo",
+                    "usersValue": "30",
+                    "valueType": 0,
+                    "value": "1000000",
+                    "natureType": 0,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105070,
+                    "conceptName": "[C_SubsidioTransporte]",
+                    "description": "Aux. de transporte/Aux. de conectividad digital",
+                    "usersValue": "30",
+                    "valueType": 0,
+                    "value": "102854",
+                    "natureType": 0,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105050,
+                    "conceptName": "[C_FondoSalud]",
+                    "description": "Fondo de salud",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "40000",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105049,
+                    "conceptName": "[C_FondoPension]",
+                    "description": "Fondo de pensión",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "40000",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                }
+            ],
+            "calendarNovelties": []
+        },
+        {
+            "usersCode": "34429",
+            "identification": "14696746-9",
+            "contractCode": 2156,
+            "fullName": "JARVI BALVINO URREGO BENAVIDEZ",
+            "totalRevenue": "1102854",
+            "totalDeduction": "80000",
+            "totalNeto": "1022854",
+            "novelties": [
+                {
+                    "conceptCode": 105068,
+                    "conceptName": "[C_Salario]",
+                    "description": "Sueldo",
+                    "usersValue": "30",
+                    "valueType": 0,
+                    "value": "1000000",
+                    "natureType": 0,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105070,
+                    "conceptName": "[C_SubsidioTransporte]",
+                    "description": "Aux. de transporte/Aux. de conectividad digital",
+                    "usersValue": "30",
+                    "valueType": 0,
+                    "value": "102854",
+                    "natureType": 0,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105050,
+                    "conceptName": "[C_FondoSalud]",
+                    "description": "Fondo de salud",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "40000",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105049,
+                    "conceptName": "[C_FondoPension]",
+                    "description": "Fondo de pensión",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "40000",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                }
+            ],
+            "calendarNovelties": []
+        },
+        {
+            "usersCode": "34430",
+            "identification": "14698408",
+            "contractCode": 2157,
+            "fullName": "LEIDER ANDRES VERGARA PRADO",
+            "totalRevenue": "1102854",
+            "totalDeduction": "80000",
+            "totalNeto": "1022854",
+            "novelties": [
+                {
+                    "conceptCode": 105068,
+                    "conceptName": "[C_Salario]",
+                    "description": "Sueldo",
+                    "usersValue": "30",
+                    "valueType": 0,
+                    "value": "1000000",
+                    "natureType": 0,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105070,
+                    "conceptName": "[C_SubsidioTransporte]",
+                    "description": "Aux. de transporte/Aux. de conectividad digital",
+                    "usersValue": "30",
+                    "valueType": 0,
+                    "value": "102854",
+                    "natureType": 0,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105050,
+                    "conceptName": "[C_FondoSalud]",
+                    "description": "Fondo de salud",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "40000",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105049,
+                    "conceptName": "[C_FondoPension]",
+                    "description": "Fondo de pensión",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "40000",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                }
+            ],
+            "calendarNovelties": []
+        },
+        {
+            "usersCode": "34431",
+            "identification": "16272651",
+            "contractCode": 2158,
+            "fullName": "LEIDER ANDRES VERGARA PRADO",
+            "totalRevenue": "1102854",
+            "totalDeduction": "80000",
+            "totalNeto": "1022854",
+            "novelties": [
+                {
+                    "conceptCode": 105068,
+                    "conceptName": "[C_Salario]",
+                    "description": "Sueldo",
+                    "usersValue": "30",
+                    "valueType": 0,
+                    "value": "1000000",
+                    "natureType": 0,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105070,
+                    "conceptName": "[C_SubsidioTransporte]",
+                    "description": "Aux. de transporte/Aux. de conectividad digital",
+                    "usersValue": "30",
+                    "valueType": 0,
+                    "value": "102854",
+                    "natureType": 0,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105050,
+                    "conceptName": "[C_FondoSalud]",
+                    "description": "Fondo de salud",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "40000",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105049,
+                    "conceptName": "[C_FondoPension]",
+                    "description": "Fondo de pensión",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "40000",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                }
+            ],
+            "calendarNovelties": []
+        },
+        {
+            "usersCode": "34471",
+            "identification": "10612613",
+            "contractCode": 2195,
+            "fullName": "Anyela Rivera",
+            "totalRevenue": "1102854",
+            "totalDeduction": "80000",
+            "totalNeto": "1022854",
+            "novelties": [
+                {
+                    "conceptCode": 105068,
+                    "conceptName": "[C_Salario]",
+                    "description": "Sueldo",
+                    "usersValue": "30",
+                    "valueType": 0,
+                    "value": "1000000",
+                    "natureType": 0,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105070,
+                    "conceptName": "[C_SubsidioTransporte]",
+                    "description": "Aux. de transporte/Aux. de conectividad digital",
+                    "usersValue": "30",
+                    "valueType": 0,
+                    "value": "102854",
+                    "natureType": 0,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105050,
+                    "conceptName": "[C_FondoSalud]",
+                    "description": "Fondo de salud",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "40000",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                },
+                {
+                    "conceptCode": 105049,
+                    "conceptName": "[C_FondoPension]",
+                    "description": "Fondo de pensión",
+                    "usersValue": "0",
+                    "valueType": 0,
+                    "value": "40000",
+                    "natureType": 1,
+                    "isDefault": true,
+                    "factor": null
+                }
+            ],
+            "calendarNovelties": []
+        }
+    ],
+    "periodTotals": {
+        "totalRevenue": "130341514",
+        "totalDeduction": "21702722",
+        "totalNeto": "108638792",
+        "totalBonus": null
+    }
+}
