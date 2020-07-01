@@ -22,6 +22,16 @@
 						],
 						"type": "text/javascript"
 					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "b7075c5b-3786-4f0f-ac5c-5532cf38155e",
+						"exec": [
+							"pm.environment.set(\"urltoken\", \"http://23.101.145.208:50000\");"
+						],
+						"type": "text/javascript"
+					}
 				}
 			],
 			"request": {
@@ -2515,32 +2525,32 @@
 	],
 	"variable": [
 		{
-			"id": "2d0688c4-58e8-40fc-9c80-516bbf86d15e",
+			"id": "6f6091bc-f818-484f-b7d2-c2240dfc73e9",
 			"key": "payrollPeriodId",
 			"value": ""
 		},
 		{
-			"id": "627bdcbe-0432-4bde-bc3c-fc5382eae091",
+			"id": "5c82f265-fe62-4616-94cd-cc277a215be1",
 			"key": "json",
 			"value": ""
 		},
 		{
-			"id": "e48359a0-e4f8-49be-9d75-feb7bf428384",
+			"id": "88caa4da-df9d-45f2-b0e0-de94b2498a71",
 			"key": "optionConcept",
 			"value": ""
 		},
 		{
-			"id": "0669adbf-45c8-48cd-9bca-40089528f7ee",
+			"id": "2981c9bf-2601-4bf9-b620-2d7555b80d76",
 			"key": "totalRevenue",
 			"value": ""
 		},
 		{
-			"id": "63cc11cf-659c-481a-a728-d199ce6678d5",
+			"id": "19856bf2-a67c-4d1b-99bb-128b3c713e1d",
 			"key": "totalDeduction",
 			"value": ""
 		},
 		{
-			"id": "47818f3f-1e45-46b3-9b58-1260bda5648e",
+			"id": "8fbd0400-285c-4b6e-9c9c-420077df77ae",
 			"key": "totalNeto",
 			"value": ""
 		}
