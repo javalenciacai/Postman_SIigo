@@ -6,6 +6,72 @@
 	},
 	"item": [
 		{
+			"name": "auth",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "fa285446-3756-4435-9881-19310598b81f",
+						"exec": [
+							"bodyData = JSON.parse(responseBody)",
+							"",
+							"token_value = bodyData.access_token",
+							"console.log(token_value)",
+							"",
+							"pm.environment.set(\"token\", token_value);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic U2lpZ29XZWI6QUJBMDhCNkEtQjU2Qy00MEE1LTkwQ0YtN0MxRTU0ODkxQjYx",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "1111",
+							"type": "text"
+						},
+						{
+							"key": "scope",
+							"value": "WebApi offline_access",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "admin@prwizarddef3.com",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{urltoken}}/connect/token",
+					"host": [
+						"{{urltoken}}"
+					],
+					"path": [
+						"connect",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "GetPayrollPeriodEmployees",
 			"event": [
 				{
@@ -2449,32 +2515,32 @@
 	],
 	"variable": [
 		{
-			"id": "20905f22-c6c0-47cf-99ac-eac2162d5f2d",
+			"id": "2d0688c4-58e8-40fc-9c80-516bbf86d15e",
 			"key": "payrollPeriodId",
 			"value": ""
 		},
 		{
-			"id": "6e0af0c1-4136-4e92-ab25-c2d2eecbc046",
+			"id": "627bdcbe-0432-4bde-bc3c-fc5382eae091",
 			"key": "json",
 			"value": ""
 		},
 		{
-			"id": "9a7fea31-4d3f-4743-94b6-a2017ba43bc5",
+			"id": "e48359a0-e4f8-49be-9d75-feb7bf428384",
 			"key": "optionConcept",
 			"value": ""
 		},
 		{
-			"id": "bada4cbc-4141-4ff2-b8e6-d8acad3d4722",
+			"id": "0669adbf-45c8-48cd-9bca-40089528f7ee",
 			"key": "totalRevenue",
 			"value": ""
 		},
 		{
-			"id": "a311ea4c-1b5d-437f-8639-10e2ce4fee67",
+			"id": "63cc11cf-659c-481a-a728-d199ce6678d5",
 			"key": "totalDeduction",
 			"value": ""
 		},
 		{
-			"id": "c3d6ee97-8f85-485b-9753-20d824001ee2",
+			"id": "47818f3f-1e45-46b3-9b58-1260bda5648e",
 			"key": "totalNeto",
 			"value": ""
 		}
