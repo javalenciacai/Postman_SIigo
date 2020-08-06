@@ -1,0 +1,570 @@
+{
+	"info": {
+		"_postman_id": "04f082e5-0b3f-49e1-b778-36aee4904e87",
+		"name": "thirdParty",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "01_auth",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2b035170-18b3-4575-b425-27f9370d789f",
+						"exec": [
+							"bodyRequest = JSON.parse(responseBody)",
+							"",
+							"var token_value = bodyRequest.access_token;",
+							"pm.environment.set(\"token\", token_value);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "04223a4c-1161-45cb-81b1-5d5472874924",
+						"exec": [
+							"pm.environment.set(\"urlToken\", \"http://23.101.145.208:50000\")\r",
+							"pm.environment.set(\"password\", \"1111\")\r",
+							"pm.environment.set(\"username\", \"empresaApi@estados.com\")\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic U2lpZ29XZWI6QUJBMDhCNkEtQjU2Qy00MEE1LTkwQ0YtN0MxRTU0ODkxQjYx",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "text"
+						},
+						{
+							"key": "scope",
+							"value": "WebApi offline_access",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "{{username}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{urlToken}}/connect/token",
+					"host": [
+						"{{urlToken}}"
+					],
+					"path": [
+						"connect",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "02_Create_ThirdParty",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "594e3ee0-5ce9-47c7-af08-a3d076d7fd53",
+						"exec": [
+							"//url del api\r",
+							"pm.collectionVariables.set(\"urlApi\",\"https://qak8s.siigo.com\")\r",
+							"\r",
+							"//Obtiene el json para crear el tercero del archivo\r",
+							"testJsonBody = pm.collectionVariables.get(\"jsonBody\");\r",
+							"//Pasa el json a un formato valído \r",
+							"testJsonBody = JSON.stringify(testJsonBody);\r",
+							"//Setea la variable jsonBody (postman)\r",
+							"pm.collectionVariables.set(\"jsonBody\", testJsonBody);\r",
+							"\r",
+							"//Obtiene el json de respuesta del archivo\r",
+							"testJsonResponse = pm.collectionVariables.get(\"jsonResponse\");\r",
+							"//Setea la variable jsonResponse (postman)\r",
+							"pm.collectionVariables.set(\"jsonResponse\", testJsonResponse);\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "56bcdf9d-5812-4935-8958-31e57cf745a9",
+						"exec": [
+							"//Captura el código de estado que viene en el archivo\r",
+							"testStatus = pm.collectionVariables.get(\"status\");\r",
+							"//Obtiene el json de respuesta de la ejecución\r",
+							"responseData = JSON.parse(responseBody);\r",
+							"//Obtiene el json de respuesta del archivo\r",
+							"csvResponseBody = pm.collectionVariables.get(\"jsonResponse\");\r",
+							"//Obtiene el guid del tercero creado\r",
+							"try {\r",
+							"    pm.collectionVariables.set(\"ThirdGuid\", responseData.AccountDto.Guid);\r",
+							"}\r",
+							"catch (e) { }\r",
+							"/*\r",
+							"    Obtiene las propiedades necesarias para acceder a niveles internos del json\r",
+							"    Es decir, si queremos verificar el fullName del tercero debemos ingresar\r",
+							"    hasta AccountDtio.Basicdata.FullName. Por lo tanto, las propiedades que necesitamos son:\r",
+							"    arrayLevel1: AccountDto \r",
+							"    arrayLevel12 BasicData [Contacts]\r",
+							"    ---   \r",
+							"    arrayLevel3: Phone [CellPhone]\r",
+							"*/\r",
+							"levelName1 = pm.collectionVariables.get(\"levelName1\");\r",
+							"levelName2 = pm.collectionVariables.get(\"levelName2\");\r",
+							"levelName3 = pm.collectionVariables.get(\"levelName3\");\r",
+							"\r",
+							"/*\r",
+							"    Objeto para capturar los niveles dentro de json de respueta del archivo\r",
+							"    Ej:\r",
+							"    objCsvResponse = [csvResponseBody[AccountDto],\r",
+							"                    csvResponseBody[AccountDto][BasicData],\r",
+							"                    csvResponseBody[AccountDto][BasicData][phone]]\r",
+							"*/\r",
+							"objCsvResponse = [csvResponseBody,\r",
+							"                 csvResponseBody[levelName1],\r",
+							"                 csvResponseBody[levelName1][levelName2],\r",
+							"                 csvResponseBody[levelName1][levelName2][levelName3]]\r",
+							"/*\r",
+							"    Objeto para capturar los niveles dentro de json de respueta de la ejecución\r",
+							"    aplica ejemplo anterior\r",
+							"*/\r",
+							"objResponse = [responseData,\r",
+							"               responseData[arrayLevel0],\r",
+							"               responseData[arrayLevel0][arrayLevel1],\r",
+							"               responseData[arrayLevel0][arrayLevel1][arrayLevel2]]\r",
+							"//Obtiene el array con las propiedades que se verificarán\r",
+							"propertiesArray = pm.collectionVariables.get(\"propertiesArray\");\r",
+							"/*\r",
+							"    Obtiene a el nivel interno al que se accederá en el json\r",
+							"    Es decir, si queremos verificar el fullName del tercero debemos ingresar\r",
+							"    hasta AccountDtio.Basicdata.FullName. Por lo tanto, los niveles son:\r",
+							"    AccuntDto.BasicData.Phone  AccuntDto.Contacts.Cellphone\r",
+							"        1         2  <--  3       1         2         3  \r",
+							"    \r",
+							"    Ps: Esta variable va de la mano con las variables arrayLevel0, arrayLevel1, arrayLevel2    \r",
+							"*/    \r",
+							"jsonLevel = pm.collectionVariables.get(\"jsonLevel\");\r",
+							"/*\r",
+							"    Variable que indica si el nivel al que se realizará la verificación es un array o no\r",
+							"    Es decir, basicData no es un array por lo tanto esta variable estaría en false,\r",
+							"    pero si lo que se desea verificar es el teléfono, el tercero puede tener muchos\r",
+							"    teléfonos (array), por lo tanto el valor de esta variable será true.\r",
+							"*/\r",
+							"index = pm.collectionVariables.get(\"index\");\r",
+							"//contador\r",
+							"csvRespondeLength = 0;\r",
+							"\r",
+							"/******************************\r",
+							"        Funciones\r",
+							" *****************************/\r",
+							"\r",
+							" //Función para contar las propiedades de un nivel\r",
+							"function propiertyCount() {\r",
+							"    for (prop in objCsvResponse[jsonLevel]) {\r",
+							"        var csvRespondeLength = csvRespondeLength + 1;\r",
+							"    }\r",
+							"    return csvRespondeLength;\r",
+							"}\r",
+							"\r",
+							"//Función que ejecuta la funcion para validar la data dependiendo del valor de la variable index\r",
+							"function selectFunctByIndex() {\r",
+							"    if (index) {\r",
+							"        return validateDataByIndex()\r",
+							"    } else {\r",
+							"        return validateData()\r",
+							"    }\r",
+							"}\r",
+							"\r",
+							"//Función para verificar la data en los niveles que No son arrays\r",
+							"function validateData() {\r",
+							"    do {\r",
+							"        var i = 0;\r",
+							"        \r",
+							"\r",
+							"        for (propierty in propertiesArray) {\r",
+							"            //variables para recorrer la respuesta del request y la respuesta del csv\r",
+							"            var responBody = objResponse[jsonLevel][propertiesArray[propierty]];            \r",
+							"            var responCsvBody = objCsvResponse[jsonLevel][propertiesArray[propierty]];\r",
+							"            \r",
+							"            if (responBody != responCsvBody) {\r",
+							"                report = (\"el valor no coincide: \" + propertiesArray[propierty] + \" Valor response: \" + responBody + \" valor csv: \" + responCsvBody);\r",
+							"                pm.collectionVariables.set(\"reporte\", false);\r",
+							"                return report;\r",
+							"            }\r",
+							"            else {\r",
+							"                pm.collectionVariables.set(\"reporte\", true);\r",
+							"            }\r",
+							"        }\r",
+							"        i++;        \r",
+							"    } while (i < propiertyCount())\r",
+							"    return (\"es correcta\");\r",
+							"}\r",
+							"\r",
+							"//Función para verificar la data en los niveles que son arrays\r",
+							"function validateDataByIndex() {\r",
+							"    do {\r",
+							"        var i = 0;\r",
+							"        for (propierty in propertiesArray) {            \r",
+							"            //variables para recorrer la respuesta del request y la respuesta del csv\r",
+							"            var responBody = objResponse[jsonLevel][i][propertiesArray[propierty]];            \r",
+							"            var responCsvBody = objCsvResponse[jsonLevel][i][propertiesArray[propierty]];           \r",
+							"            if (responBody != responCsvBody) {\r",
+							"                report = (\"el valor no coincide: \" + propertiesArray[propierty] + \" Valor response: \" + responBody + \" valor csv: \" + responCsvBody);\r",
+							"                pm.collectionVariables.set(\"reporte\", false);\r",
+							"                return report;\r",
+							"            }\r",
+							"            else {\r",
+							"                pm.collectionVariables.set(\"reporte\", true);\r",
+							"            }\r",
+							"        }\r",
+							"        i++;        \r",
+							"    } while (i < propiertyCount())\r",
+							"    return (\"es correcta\");\r",
+							"}\r",
+							"\r",
+							"//Test que verifica el código de estado\r",
+							"pm.test(\"Código de estado es \" + testStatus, function () {\r",
+							"    pm.response.to.have.status(testStatus);\r",
+							"    //Agregar que verifique cuando es error que el código del estado \r",
+							"});\r",
+							"\r",
+							"//Test para verificar el tiempo de respuesta\r",
+							"pm.test(\"Tiempo de respuesta es menor a 4500\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(4500);\r",
+							"});\r",
+							"\r",
+							"//Test para velificar la información\r",
+							"pm.test(\"Verificación de la información \" + selectFunctByIndex(), function () {\r",
+							"    pm.expect(pm.collectionVariables.get(\"reporte\")).to.eql(true);\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "{{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{{jsonBody}}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{urlApi}}/api/third-party/account",
+					"host": [
+						"{{urlApi}}"
+					],
+					"path": [
+						"api",
+						"third-party",
+						"account"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "05_Delete_ThirdParty",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "202f12ae-4f9e-46da-bc83-ba21177b566b",
+						"exec": [
+							"if(pm.collectionVariables.set(\"ThirdGuid\") == null){\r",
+							"\r",
+							"}\r",
+							"else{    \r",
+							"    pm.sendRequest(\"https://postman-echo.com/get\", function (err, response) {\r",
+							"        console.log(response.json());\r",
+							"    });\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "f6eddbdf-3ffe-4210-9f17-bcfdfd9db181",
+						"exec": [
+							"//Test que verifica el código de estado\r",
+							"pm.test(\"Código de estado es \" + testStatus, function () {\r",
+							"    pm.response.to.have.status(testStatus);\r",
+							"    //Agregar que verifique cuando es error que el código del estado \r",
+							"});\r",
+							"\r",
+							"//Test para verificar el tiempo de respuesta\r",
+							"pm.test(\"Tiempo de respuesta es menor a 4500\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(4500);\r",
+							"});\r",
+							"\r",
+							"//cuando va null\r",
+							"/*\r",
+							"    {\r",
+							"    \"Status\": 500,\r",
+							"    \"Service\": \"msthirdparty\",\r",
+							"    \"Errors\": [\r",
+							"        {\r",
+							"            \"Code\": null,\r",
+							"            \"Message\": \"Internal Server Error\",\r",
+							"            \"Source\": \"CoreLib\",\r",
+							"            \"Params\": [],\r",
+							"            \"Detail\": \"Guid should contain 32 digits with 4 dashes (xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx). - \"\r",
+							"        }\r",
+							"    ]\r",
+							"}\r",
+							" */"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "{{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{urlApi}}/api/third-party/account/{{ThirdGuid}}",
+					"host": [
+						"{{urlApi}}"
+					],
+					"path": [
+						"api",
+						"third-party",
+						"account",
+						"{{ThirdGuid}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "88a7bf5a-e619-4c0d-93f3-3ed70b9abfb3",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "4451dd13-0793-4e07-ba3e-712ce99dbca7",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "5f9b86e1-a191-41b2-bc67-b114a6c9954d",
+			"key": "json",
+			"value": "{\"AccountDto\":{\"IsActive\":true,\"BasicData\":{\"IsCustomer\":true,\"IsSupplier\":false,\"IsOther\":false,\"IsSocialReason\":true,\"FirstName\":\"a\",\"LastName\":\"b\",\"FullName\":\"Andres Ruiz\",\"IdTypeCode\":21,\"Identification\":\"89031938\",\"CheckDigit\":null,\"BranchOffice\":0,\"VATCompanyType\":0,\"CompanyName\":null,\"Address\":\"Cra 48 N° 26 - 85 Av. Industriales; Medellín; Antioquia\",\"City\":6791,\"Phone\":[{\"indicative\":\"1\",\"number\":\"11111\",\"extension\":\"1\"}]},\"Contacts\":[{\"FirstName\":\"Contacto\",\"LastName\":\"Prueba Asus\",\"Email\":\"contacto@siigo.com\",\"IsPrincipal\":true,\"ContactId\":null,\"AccountCode\":null,\"Charge\":\"Nuevo Cargo\",\"CellPhone\":{\"indicative\":\"444\",\"number\":\"4444444444\",\"extention\":\"4\"}}],\"RelatedUsers\":{\"SalesmanId\":null,\"CollectorId\":null},\"CreatedByDate\":\"2019-08-01T15:09:51.023Z\",\"CreatedByUser\":34156,\"UpdatedByDate\":\"0001-01-01T00:00:00Z\",\"UpdatedByUser\":null,\"Comments\":null,\"FiscalResponsibilityCode\":\"[{\\\"FiscalResponsibilityID\\\":22,\\\"Code\\\":\\\"O-99\\\",\\\"Description\\\":\\\"Otro tipo de obligado\\\"}]\",\"FreeFields\":[]}}"
+		},
+		{
+			"id": "795e607f-fc4d-41a1-862f-d2c4fea2d7b3",
+			"key": "status",
+			"value": 201
+		},
+		{
+			"id": "ce41d850-8003-4ae9-a818-307f5f268f89",
+			"key": "urlApi",
+			"value": "https://qak8s.siigo.com"
+		},
+		{
+			"id": "f25fc5a8-e4ae-41c0-9b7b-66f1aa19d12d",
+			"key": "guid",
+			"value": "ceb7dc80-ac60-424f-8287-4c8332167d82"
+		},
+		{
+			"id": "2404da1f-31d0-4192-afd2-4b3f39af8d4a",
+			"key": "jsonBody",
+			"value": "\"{\\\"AccountDto\\\":{\\\"IsActive\\\":true,\\\"BasicData\\\":{\\\"IsCustomer\\\":true,\\\"IsSupplier\\\":false,\\\"IsOther\\\":false,\\\"IsSocialReason\\\":true,\\\"FirstName\\\":\\\"\\\",\\\"LastName\\\":\\\"\\\",\\\"FullName\\\":\\\"Andres Ruiz\\\",\\\"IdTypeCode\\\":21,\\\"Identification\\\":\\\"8676\\\",\\\"CheckDigit\\\":null,\\\"BranchOffice\\\":0,\\\"VATCompanyType\\\":0,\\\"CompanyName\\\":null,\\\"Address\\\":\\\"Cra 48 N° 26 - 85 Av. Industriales; Medellín; Antioquia\\\",\\\"City\\\":6791,\\\"Phone\\\":[{\\\"indicative\\\":\\\"1\\\",\\\"number\\\":\\\"11111\\\",\\\"extension\\\":\\\"1\\\"}]},\\\"Contacts\\\":[{\\\"FirstName\\\":\\\"Contacto\\\",\\\"LastName\\\":\\\"Prueba Asus\\\",\\\"Email\\\":\\\"contacto@siigo.com\\\",\\\"IsPrincipal\\\":true,\\\"ContactId\\\":null,\\\"AccountCode\\\":null,\\\"Charge\\\":\\\"Nuevo Cargo\\\",\\\"CellPhone\\\":{\\\"indicative\\\":\\\"444\\\",\\\"number\\\":\\\"4444444444\\\",\\\"extention\\\":\\\"4\\\"}}],\\\"RelatedUsers\\\":{\\\"SalesmanId\\\":null,\\\"CollectorId\\\":null},\\\"CreatedByDate\\\":\\\"2019-08-01T15:09:51.023Z\\\",\\\"CreatedByUser\\\":34156,\\\"UpdatedByDate\\\":\\\"0001-01-01T00:00:00Z\\\",\\\"UpdatedByUser\\\":null,\\\"Comments\\\":null,\\\"FiscalResponsibilityCode\\\":\\\"[{\\\\\\\"FiscalResponsibilityID\\\\\\\":22,\\\\\\\"Code\\\\\\\":\\\\\\\"O-99\\\\\\\",\\\\\\\"Description\\\\\\\":\\\\\\\"Otro tipo de obligado\\\\\\\"}]\\\",\\\"FreeFields\\\":[]}}\""
+		},
+		{
+			"id": "807a129a-5b53-4845-8c22-e595d317f36c",
+			"key": "jsonResponse",
+			"value": {
+				"AccountDto": {
+					"AccountId": 565395,
+					"BasicData": {
+						"Address": "Cra 48 N° 26 - 85 Av. Industriales; Medellín; Antioquia",
+						"BranchOffice": 0,
+						"CheckDigit": null,
+						"City": 6791,
+						"CompanyName": null,
+						"FirstName": "",
+						"FullName": "Andres Ruiz",
+						"IdTypeCode": 21,
+						"Identification": "8618",
+						"IsCustomer": true,
+						"IsOther": false,
+						"IsSocialReason": true,
+						"IsSupplier": false,
+						"LastName": "",
+						"Phone": [
+							{
+								"Extention": "",
+								"Indicative": "1",
+								"Number": "11112"
+							}
+						],
+						"VATCompanyType": 0
+					},
+					"Code": "ISY586RNST83WMW9EJWG",
+					"Comments": null,
+					"Contacts": [
+						{
+							"AccountCode": 565395,
+							"CellPhone": {
+								"Extension": "4",
+								"Indicative": "444",
+								"Number": "4444444444"
+							},
+							"Charge": "Nuevo Cargo",
+							"ContactId": 265591,
+							"Email": "contacto@siigo.coma",
+							"FirstName": "Contactos",
+							"IsPrincipal": true,
+							"LastName": "Prueba Asus"
+						}
+					],
+					"CreatedByDate": "2020-07-15T14:42:12.7310052+00:00",
+					"CreatedByUser": 7235,
+					"FiscalResponsibilityCode": "[{\"FiscalResponsibilityID\":22,\"Code\":\"O-99\",\"Description\":\"Otro tipo de obligado\"}]",
+					"FreeFields": [],
+					"Guid": "a9b56b10-9490-4262-8d29-42e707ab0bdf",
+					"Id": "5f0f15c59c3e850001333883",
+					"IsActive": false,
+					"Picture": null,
+					"RelatedUsers": {
+						"CollectorId": null,
+						"SalesmanId": null
+					},
+					"TenantId": "0x00000000000000000000000000154602",
+					"UpdatedByDate": "0001-01-01T00:00:00",
+					"UpdatedByUser": null
+				}
+			}
+		},
+		{
+			"id": "f16407f1-6fbd-4050-8ffb-7f10bed47b47",
+			"key": "report",
+			"value": false
+		},
+		{
+			"id": "d9846a72-79fd-4e7f-a9c6-e0512434d2a5",
+			"key": "arrayResponse",
+			"value": "AccountDto"
+		},
+		{
+			"id": "31b26b8b-866f-49a4-8455-36cea047dc41",
+			"key": "subArray",
+			"value": true
+		},
+		{
+			"id": "cb424a64-85eb-44b0-b2d5-5fa52f612498",
+			"key": "propertiesArray",
+			"value": [
+				"Number"
+			]
+		},
+		{
+			"id": "2d68d130-a2f8-4a95-9659-3e470a404d5c",
+			"key": "ThirdGuid",
+			"value": null
+		},
+		{
+			"id": "f1bfec62-e7c2-4245-b0da-23b9591d7f1f",
+			"key": "jsonLevel",
+			"value": 2
+		},
+		{
+			"id": "b15105de-0204-4082-8eb2-8b41774bba42",
+			"key": "arrayLevel1",
+			"value": "BasicData"
+		},
+		{
+			"id": "ce29878e-dc6a-4982-a277-f4a8987d1e84",
+			"key": "arrayLevel2",
+			"value": "Phone"
+		},
+		{
+			"id": "5dd71cbc-4dcb-4014-a261-a00546be8eb4",
+			"key": "arrayLevel3",
+			"value": "Phone"
+		},
+		{
+			"id": "869e4eb6-d460-402f-ba60-98b5d0769c36",
+			"key": "arrayLevel0",
+			"value": "AccountDto"
+		},
+		{
+			"id": "f8d42fc3-7756-4096-ba4d-77b482ddb28b",
+			"key": "index",
+			"value": true
+		}
+	],
+	"protocolProfileBehavior": {}
+}

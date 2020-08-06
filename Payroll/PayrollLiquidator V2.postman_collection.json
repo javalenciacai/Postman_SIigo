@@ -157,7 +157,7 @@
 									"\r",
 									"    }\r",
 									"\r",
-									"    console.log(\"ID = \" + pm.collectionVariables.get(\"payrollPeriodId\"))\r",
+									"    console.log(\"payrollPeriodIdTest = \" + pm.collectionVariables.get(\"payrollPeriodId\"))\r",
 									"}\r",
 									"\r",
 									"pm.test(\"Response time is less than 4000ms\", function () {\r",
@@ -236,11 +236,15 @@
 									"\r",
 									"pm.collectionVariables.set(\"jsonTest\" , jsonTest);\r",
 									"\r",
-									"pm.collectionVariables.set(\"levelName\", 'periodTotals');\r",
+									"pm.collectionVariables.set(\"index\",\"indexByProperties\");\r",
 									"\r",
-									"pm.collectionVariables.set(\"propertyList\", \"totalRevenue,totalNeto\");\r",
+									"pm.collectionVariables.set(\"levelName\", 'employeesData');\r",
 									"\r",
-									"pm.collectionVariables.set(\"index\",\"byProperties\");\r",
+									"pm.collectionVariables.set(\"propertyList\", \"description\");\r",
+									"\r",
+									"pm.collectionVariables.set(\"levelNameIndexByProperties\", \"novelties\");\r",
+									"\r",
+									"\r",
 									"\r",
 									""
 								],
@@ -255,17 +259,24 @@
 									"//Captura el código de estado que viene en el archivo\r",
 									"testStatus = pm.variables.get(\"statusGetPayroll\");\r",
 									"//Obtiene el json de respuesta de la ejecución\r",
+									"if (responseBody != \"\") {\r",
 									"responseData = JSON.parse(responseBody);\r",
+									"}\r",
 									"//Obtiene el json de respuesta del archivo\r",
+									"if (pm.variables.get(\"jsonTest\") != \"\") {\r",
 									"csvResponseBody = JSON.parse(pm.variables.get(\"jsonTest\"));\r",
+									"}\r",
 									"//Obtiene el array con las propiedades que se verificarán\r",
 									"propertyList = (pm.variables.get(\"propertyList\")).split(\",\");\r",
 									"\r",
 									"pathlevel = pm.variables.get(\"levelName\");\r",
+									"levelNameIndexByProperties = pm.variables.get(\"levelNameIndexByProperties\");\r",
 									"\r",
 									"index = pm.variables.get(\"index\");\r",
 									"//contador\r",
-									"var csvRespondeLength = getValueJSON(pathlevel, responseData).length;\r",
+									"try{\r",
+									"var csvRespondeLength = Object.keys(getValueJSON(pathlevel, responseData)).length;\r",
+									"}catch(e){console.log(\"Contador Null\")}\r",
 									"\r",
 									"/******************************\r",
 									"        Funciones\r",
@@ -313,6 +324,9 @@
 									"\r",
 									"        case 'indexByProperties':\r",
 									"            return validateIndexByProperties();\r",
+									"\r",
+									"        default:\r",
+									"            return \"Opcion no definida verifique los datos\"\r",
 									"    }\r",
 									"}\r",
 									"\r",
@@ -370,7 +384,7 @@
 									"    do {\r",
 									"        for (propierty in propertyList) {\r",
 									"            //variables para recorrer la respuesta del request y la respuesta del csv\r",
-									"            responBody = getValueJSON(pathlevel + \"[\" + i + \"].\"+ levelNameIndexByProperties + \".\" + propertyList[propierty], responseData);\r",
+									"            responBody = getValueJSON(pathlevel + \"[\" + i + \"].\" + levelNameIndexByProperties + \".\" + propertyList[propierty], responseData);\r",
 									"            responCsvBody = getValueJSON(pathlevel + \"[\" + i + \"].\" + levelNameIndexByProperties + \".\" + propertyList[propierty], csvResponseBody);\r",
 									"\r",
 									"            if (responBody != responCsvBody) {\r",
@@ -388,20 +402,23 @@
 									"}\r",
 									"\r",
 									"//Test que verifica el código de estado\r",
-									"pm.test(\"Código de estado es \" + testStatus, function () {\r",
-									"    pm.response.to.have.status(testStatus);\r",
-									"});\r",
+									"    pm.test(\"Código de estado es \" + testStatus, function () {\r",
+									"        pm.response.to.have.status(testStatus);\r",
+									"    });\r",
 									"\r",
-									"//Test para verificar el tiempo de respuesta\r",
-									"pm.test(\"Tiempo de respuesta es menor a 4500\", function () {\r",
-									"    pm.expect(pm.response.responseTime).to.be.below(4500);\r",
-									"});\r",
+									"if (testStatus == 200) {   \r",
+									"\r",
+									"    //Test para verificar el tiempo de respuesta\r",
+									"    pm.test(\"Tiempo de respuesta es menor a 4500\", function () {\r",
+									"        pm.expect(pm.response.responseTime).to.be.below(4500);\r",
+									"    });\r",
 									"\r",
 									"\r",
-									"//Test para velificar la información\r",
-									"pm.test(\"Verificación de la información \" + selectFunctByIndex(), function () {\r",
-									"    pm.expect(pm.collectionVariables.get(\"reporte\")).to.eql(true);\r",
-									"});"
+									"    //Test para velificar la información\r",
+									"    pm.test(\"Verificación de la información \" + selectFunctByIndex(), function () {\r",
+									"        pm.expect(pm.collectionVariables.get(\"reporte\")).to.eql(true);\r",
+									"    });\r",
+									"}"
 								],
 								"type": "text/javascript"
 							}
@@ -618,143 +635,148 @@
 	],
 	"variable": [
 		{
-			"id": "63834367-e667-487f-8fa4-23e5be0dc157",
+			"id": "97ed509e-d304-4597-b5f8-63d8f277f545",
 			"key": "payrollPeriodId",
 			"value": "Variable de response"
 		},
 		{
-			"id": "94878277-3824-4d68-93dc-817cc9779729",
+			"id": "5afa2415-8d82-46a4-904b-bef56d569f39",
 			"key": "json",
 			"value": ""
 		},
 		{
-			"id": "1eb4deb0-19c5-4cbb-8880-d9d02aa4666b",
+			"id": "51b56a47-9afc-4267-9b85-49700073bd62",
 			"key": "totalRevenue",
 			"value": ""
 		},
 		{
-			"id": "ebd5a473-642b-4593-af3b-7faf0b35289f",
+			"id": "1a0bc950-c6fd-4b75-b5ac-eda0ccba2922",
 			"key": "totalDeduction",
 			"value": ""
 		},
 		{
-			"id": "c04739e4-a92c-48b5-8ff4-ff35edb6ec13",
+			"id": "7f8340d2-3794-421b-9f53-ff08211915b4",
 			"key": "totalNeto",
 			"value": ""
 		},
 		{
-			"id": "e07dd19d-b8b1-4357-802a-bdc8d8be7856",
+			"id": "aace77a1-25e6-44e5-a8bc-740af970aae4",
 			"key": "password",
 			"value": ""
 		},
 		{
-			"id": "26127ff8-7f21-4176-8a0f-e84eff051594",
+			"id": "73af1ad9-df95-4644-859c-ea2bb9d2cc28",
 			"key": "username",
 			"value": ""
 		},
 		{
-			"id": "1ab47474-8191-4474-ab98-0c8b3da22f19",
+			"id": "179fb37e-6d7e-45c0-98d6-3f97666a4982",
 			"key": "periodType",
 			"value": ""
 		},
 		{
-			"id": "f24211be-3eec-4d5b-8038-0d09a57e9cf8",
+			"id": "714b90b2-db71-4485-9590-65afc1b1424e",
 			"key": "description",
 			"value": ""
 		},
 		{
-			"id": "91577fe7-8bae-46de-9fec-07be410c3413",
+			"id": "74b86150-3762-441e-99d5-31cf14476a68",
 			"key": "year",
 			"value": ""
 		},
 		{
-			"id": "9b28b93b-57ea-4b1d-a002-34570064a64e",
+			"id": "5c5d0152-0b70-4ecc-9f4b-cd9080156ffb",
 			"key": "month",
 			"value": ""
 		},
 		{
-			"id": "386f4949-30e3-4829-b3c0-4c66ac8e2da9",
+			"id": "08fb252e-0b63-478f-9a05-21eeaa1d8d1c",
 			"key": "propertyEmployees",
 			"value": ""
 		},
 		{
-			"id": "3ac65f2c-b6ba-48fd-a8ab-958502279763",
+			"id": "8b699043-4642-4b27-b35c-1ab0dd6f3dc8",
 			"key": "propertyConcept",
 			"value": ""
 		},
 		{
-			"id": "0229d92c-c259-4f08-adf5-d4a12fc75d6c",
+			"id": "8f55770a-f47e-47e8-8e45-e15355fabe53",
 			"key": "errors",
 			"value": ""
 		},
 		{
-			"id": "b44fa2d4-76ad-44a6-9ffb-55c5fb06a3a4",
+			"id": "c54745d2-0104-48ee-972d-0b960aba9091",
 			"key": "stringResponse",
 			"value": ""
 		},
 		{
-			"id": "55c0213f-8382-44d3-ae16-35d3786af79a",
+			"id": "889c7f65-7a52-4394-967c-1b6199a41dd8",
 			"key": "stringResponseCreate",
 			"value": ""
 		},
 		{
-			"id": "71e61fb9-4af0-4fc5-9d03-3245da0d5fb9",
+			"id": "db6d6778-5321-446a-9530-08caf54c6213",
 			"key": "payrollPeriodIdTest",
 			"value": ""
 		},
 		{
-			"id": "cf6ea71b-e1b3-4213-bf19-a68860d700f9",
+			"id": "de532b68-a960-4a4a-9ca9-bde81d2118e6",
 			"key": "string",
 			"value": ""
 		},
 		{
-			"id": "6acdbcea-0cb6-49b7-a350-407a13d5cf1b",
+			"id": "f6cb63b4-fd37-4d05-acf1-33d1a0c85003",
 			"key": "status",
 			"value": ""
 		},
 		{
-			"id": "0f671cee-e33e-4ed6-b7ae-7eb0ddd1f83e",
+			"id": "f0afc3b0-8272-4f09-ba1f-e90fff0758fb",
 			"key": "statusDelete",
 			"value": ""
 		},
 		{
-			"id": "c18aa0cd-38db-47ac-9518-edef27fd093e",
+			"id": "eede3447-537d-41fb-9004-0011b7ed5ec1",
 			"key": "statusCreate",
 			"value": ""
 		},
 		{
-			"id": "2e546671-82ee-47e2-9cc3-3be9e3be0164",
+			"id": "b5e27df5-7eac-44d3-a0d7-d3e513d49833",
 			"key": "statusGetPayroll",
 			"value": ""
 		},
 		{
-			"id": "dc9754ef-8bb1-4e52-bf81-097d4b67700a",
+			"id": "583e280e-737d-457c-a83d-b636f1ffb080",
 			"key": "index",
 			"value": ""
 		},
 		{
-			"id": "212e57f5-57bf-4b14-b6be-f99cfa7b3cd4",
+			"id": "2b66a692-13a5-4ed4-8255-8dcc950a8984",
 			"key": "levelName1",
 			"value": ""
 		},
 		{
-			"id": "6112f4e2-e640-4022-be46-63659af38b5c",
+			"id": "2267856f-62c3-4b41-8578-e99dddb1da67",
 			"key": "jsonTest",
 			"value": ""
 		},
 		{
-			"id": "09ab7fac-9fae-43fe-89aa-6380fecc9fe2",
+			"id": "4040fe4a-7547-44e1-bae4-3a257ffdd34f",
 			"key": "propertyList",
 			"value": ""
 		},
 		{
-			"id": "1a08a894-e6be-40c9-95a2-be13e78c6058",
+			"id": "c0564c08-3ac3-44cd-8371-16084eef44c3",
 			"key": "reporte",
 			"value": ""
 		},
 		{
-			"id": "7d0c5de2-96a2-4623-9019-83927c1ebdb4",
+			"id": "499d1163-078d-4caf-954c-842658f023da",
 			"key": "levelName",
+			"value": ""
+		},
+		{
+			"id": "8e218538-72fd-4907-80c4-2d8a65854e29",
+			"key": "levelNameIndexByProperties",
 			"value": ""
 		}
 	],

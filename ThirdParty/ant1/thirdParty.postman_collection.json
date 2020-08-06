@@ -1,0 +1,441 @@
+{
+	"info": {
+		"_postman_id": "16af3ff3-4104-4fd3-b04c-15272790e5d0",
+		"name": "thirdParty",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "01_auth",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d0625c2f-3871-46e8-a634-3f123fe6d603",
+						"exec": [
+							"bodyRequest = JSON.parse(responseBody)",
+							"",
+							"var token_value = bodyRequest.access_token;",
+							"pm.variables.set(\"token\", token_value);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "3da19f7f-33b9-456d-b966-bb295691cd62",
+						"exec": [
+							"pm.environment.set(\"urlToken\", \"http://23.101.145.208:50000\")\r",
+							"pm.environment.set(\"password\", \"1111\")\r",
+							"pm.environment.set(\"username\", \"empresaApi@estados.com\")\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic U2lpZ29XZWI6QUJBMDhCNkEtQjU2Qy00MEE1LTkwQ0YtN0MxRTU0ODkxQjYx",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "text"
+						},
+						{
+							"key": "scope",
+							"value": "WebApi offline_access",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "{{username}}",
+							"type": "text"
+						}
+					],
+					"options": {
+						"urlencoded": {}
+					}
+				},
+				"url": {
+					"raw": "{{urlToken}}/connect/token",
+					"host": [
+						"{{urlToken}}"
+					],
+					"path": [
+						"connect",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "02_Create_ThirdParty",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "c0b2fd2b-5ce5-4aec-b953-4af56207766b",
+						"exec": [
+							"//url del api\r",
+							"pm.variables.set(\"urlApi\",\"https://qak8s.siigo.com\")\r",
+							"/*pm.variables.set(\"status\", 400);\r",
+							"pm.variables.set(\"jsonLevel\", 1);\r",
+							"pm.variables.set(\"index\", true);\r",
+							"pm.variables.set(\"levelName1\", \"Errors\");\r",
+							"pm.variables.set(\"levelName2\", 0);\r",
+							"pm.variables.set(\"levelName3\", 0);\r",
+							"pm.variables.set(\"propertyList\",['Code','Message','Source','Detail']);\r",
+							"*/\r",
+							" \r",
+							"//Obtiene el json para crear el tercero del archivo\r",
+							"//testJsonBody = pm.variables.get(\"jsonBody\");\r",
+							"//Pasa el json a un formato valído \r",
+							"//testJsonBody = JSON.parse(testJsonBody);\r",
+							"//console.log(\"testJsonBody: \"+ testJsonBody);\r",
+							"//Setea la variable jsonBody (postman)\r",
+							"pm.variables.get(\"jsonBody\");\r",
+							"/* \r",
+							"//Obtiene el json de respuesta del archivo\r",
+							"testJsonResponse = pm.variables.get(\"jsonTest\");\r",
+							"//testJsonResponse = JSON.stringify(testJsonResponse);\r",
+							"console.log(\"testJsonResponse: \"+testJsonResponse);\r",
+							"pm.variables.set(\"jsonTest\",testJsonResponse);\r",
+							"//Setea la variable jsonResponse (postman)\r",
+							"*/"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "f8a9c221-b791-4790-9a11-7cb67872ba9c",
+						"exec": [
+							"//Captura el código de estado que viene en el archivo\r",
+							"testStatus = pm.variables.get(\"status\");\r",
+							"//Obtiene el json de respuesta de la ejecución\r",
+							"responseData = JSON.parse(responseBody);\r",
+							"console.log(\"responseData: \"+ JSON.stringify(responseData));\r",
+							"//Obtiene el json de respuesta del archivo\r",
+							"csvResponseBody = JSON.parse(pm.variables.get(\"jsonTest\"));\r",
+							"console.log(\"csvResponseBody: \"+csvResponseBody);\r",
+							"//Obtiene el guid del tercero creado\r",
+							"try {\r",
+							"    pm.collectionVariables.set(\"ThirdGuid\", responseData.AccountDto.Guid);\r",
+							"}\r",
+							"catch (e) { }\r",
+							"/*\r",
+							"    Obtiene las propiedades necesarias para acceder a niveles internos del json\r",
+							"    Es decir, si queremos verificar el fullName del tercero debemos ingresar\r",
+							"    hasta AccountDtio.Basicdata.FullName. Por lo tanto, las propiedades que necesitamos son:\r",
+							"    levelName1: AccountDto \r",
+							"    levelName2: BasicData [Contacts]\r",
+							"    ---   \r",
+							"    levelName3: Phone [CellPhone]\r",
+							"*/\r",
+							"levelName1 = pm.variables.get(\"levelName1\");\r",
+							"levelName2 = pm.variables.get(\"levelName2\");\r",
+							"levelName3 = pm.variables.get(\"levelName3\");\r",
+							"\r",
+							"/*\r",
+							"    Objeto para capturar los niveles dentro de json de respueta del archivo\r",
+							"    Ej:\r",
+							"    objCsvResponse = [csvResponseBody[AccountDto],\r",
+							"                    csvResponseBody[AccountDto][BasicData],\r",
+							"                    csvResponseBody[AccountDto][BasicData][phone]]\r",
+							"*/\r",
+							"objCsvResponse = [csvResponseBody,\r",
+							"                 csvResponseBody[levelName1],\r",
+							"                 csvResponseBody[levelName1][levelName2],\r",
+							"               csvResponseBody[levelName1][levelName2][levelName3]];\r",
+							"/*\r",
+							"    Objeto para capturar los niveles dentro de json de respueta de la ejecución\r",
+							"    aplica ejemplo anterior\r",
+							"*/\r",
+							"objResponse = [responseData,\r",
+							"               responseData[levelName1],\r",
+							"               responseData[levelName1][levelName2],\r",
+							"               responseData[levelName1][levelName2][levelName3]];\r",
+							"//Obtiene el array con las propiedades que se verificarán\r",
+							"propertyList = pm.variables.get(\"propertyList\");\r",
+							"console.log(\"propertyList \"+propertyList);\r",
+							"/*\r",
+							"    Obtiene a el nivel interno al que se accederá en el json\r",
+							"    Es decir, si queremos verificar el fullName del tercero debemos ingresar\r",
+							"    hasta AccountDtio.Basicdata.FullName. Por lo tanto, los niveles son:\r",
+							"    AccuntDto.BasicData.Phone  AccuntDto.Contacts.Cellphone\r",
+							"        1         2  <--  3       1         2         3  \r",
+							"    \r",
+							"    Ps: Esta variable va de la mano con las variables arrayLevel0, arrayLevel1, arrayLevel2    \r",
+							"*/    \r",
+							"jsonLevel = pm.variables.get(\"jsonLevel\");\r",
+							"/*\r",
+							"    Variable que indica si el nivel al que se realizará la verificación es un array o no\r",
+							"    Es decir, basicData no es un array por lo tanto esta variable estaría en false,\r",
+							"    pero si lo que se desea verificar es el teléfono, el tercero puede tener muchos\r",
+							"    teléfonos (array), por lo tanto el valor de esta variable será true.\r",
+							"*/\r",
+							"index = pm.variables.get(\"index\");\r",
+							"//contador\r",
+							"csvRespondeLength = 0;\r",
+							"\r",
+							"/******************************\r",
+							"        Funciones\r",
+							" *****************************/\r",
+							"\r",
+							" //Función para contar las propiedades de un nivel\r",
+							"function propiertyCount() {\r",
+							"    for (prop in objCsvResponse[jsonLevel]) {\r",
+							"        var csvRespondeLength = csvRespondeLength + 1;\r",
+							"        console.log(\"objCsvResponse[jsonLevel] \"+objCsvResponse[jsonLevel]);\r",
+							"        console.log(csvRespondeLength);\r",
+							"    }\r",
+							"    return csvRespondeLength;\r",
+							"}\r",
+							"\r",
+							"//Función que ejecuta la funcion para validar la data dependiendo del valor de la variable index\r",
+							"function selectFunctByIndex() {\r",
+							"    if (index) {\r",
+							"        return validateDataByIndex()\r",
+							"    } else {\r",
+							"        return validateData()\r",
+							"    }\r",
+							"}\r",
+							"\r",
+							"//Función para verificar la data en los niveles que No son arrays\r",
+							"function validateData() {\r",
+							"    do {\r",
+							"        var i = 0;                  \r",
+							"        for (propierty in propertyList) {\r",
+							"            //variables para recorrer la respuesta del request y la respuesta del csv\r",
+							"            var responBody = objResponse[jsonLevel][propertyList[propierty]];            \r",
+							"            var responCsvBody = objCsvResponse[jsonLevel][propertyList[propierty]];\r",
+							"            \r",
+							"            if (responBody != responCsvBody) {\r",
+							"                report = (\"el valor no coincide: \" + propertyList[propierty] + \" Valor response: \" + responBody + \" valor csv: \" + responCsvBody);\r",
+							"                pm.collectionVariables.set(\"reporte\", false);\r",
+							"                return report;\r",
+							"            }\r",
+							"            else {\r",
+							"                pm.collectionVariables.set(\"reporte\", true);\r",
+							"            }\r",
+							"        }\r",
+							"        i++;        \r",
+							"    } while (i < propiertyCount())\r",
+							"    return (\"es correcta\");\r",
+							"}\r",
+							"\r",
+							"//Función para verificar la data en los niveles que son arrays\r",
+							"function validateDataByIndex() {\r",
+							"    do {\r",
+							"        var i = 0;\r",
+							"        for (propierty in propertyList) {            \r",
+							"            //variables para recorrer la respuesta del request y la respuesta del csv\r",
+							"            var responBody = objResponse[jsonLevel][i][propertyList[propierty]];            \r",
+							"            var responCsvBody = objCsvResponse[jsonLevel][i][propertyList[propierty]];           \r",
+							"            if (responBody != responCsvBody) {\r",
+							"                report = (\"el valor no coincide: \" + propertyList[propierty] + \" Valor response: \" + responBody + \" valor csv: \" + responCsvBody);\r",
+							"                pm.collectionVariables.set(\"reporte\", false);\r",
+							"                return report;\r",
+							"            }\r",
+							"            else {\r",
+							"                pm.collectionVariables.set(\"reporte\", true);\r",
+							"            }\r",
+							"        }\r",
+							"        i++;        \r",
+							"    } while (i < propiertyCount())\r",
+							"    return (\"es correcta\");\r",
+							"}\r",
+							"\r",
+							"//Test que verifica el código de estado\r",
+							"pm.test(\"Código de estado es \" + testStatus, function () {\r",
+							"    pm.response.to.have.status(testStatus);\r",
+							"});\r",
+							"\r",
+							"//Test para verificar el tiempo de respuesta\r",
+							"pm.test(\"Tiempo de respuesta es menor a 4500\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(4500);\r",
+							"});\r",
+							"\r",
+							"//Test para velificar la información\r",
+							"pm.test(\"Verificación de la información \" + selectFunctByIndex(), function () {\r",
+							"    pm.expect(pm.collectionVariables.get(\"reporte\")).to.eql(true);\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "{{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{{jsonBody}}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{urlApi}}/api/third-party/account",
+					"host": [
+						"{{urlApi}}"
+					],
+					"path": [
+						"api",
+						"third-party",
+						"account"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "05_Delete_ThirdParty",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "{{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{urlApi}}/api/third-party/account/{{ThirdGuid}}",
+					"host": [
+						"{{urlApi}}"
+					],
+					"path": [
+						"api",
+						"third-party",
+						"account",
+						"{{ThirdGuid}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "59f9779d-4656-4456-a783-e0f722fed451",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "44178ed7-1eca-4ba5-b2fc-4574dc188c5f",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "506582b1-23e9-4407-a997-0afc2b683cf5",
+			"key": "status",
+			"value": 201
+		},
+		{
+			"id": "f5f52362-f8a6-43c8-9844-e8970fa5c0cc",
+			"key": "urlApi",
+			"value": "https://qak8s.siigo.com"
+		},
+		{
+			"id": "c3017f9f-ed47-40f4-8505-a088aa635fbf",
+			"key": "jsonBody",
+			"value": "\"\\\"\\\\\\\"{\\\\\\\\\\\\\\\"AccountDto\\\\\\\\\\\\\\\":{\\\\\\\\\\\\\\\"IsActive\\\\\\\\\\\\\\\":true,\\\\\\\\\\\\\\\"BasicData\\\\\\\\\\\\\\\":{\\\\\\\\\\\\\\\"IsCustomer\\\\\\\\\\\\\\\":true,\\\\\\\\\\\\\\\"IsSupplier\\\\\\\\\\\\\\\":false,\\\\\\\\\\\\\\\"IsOther\\\\\\\\\\\\\\\":false,\\\\\\\\\\\\\\\"IsSocialReason\\\\\\\\\\\\\\\":true,\\\\\\\\\\\\\\\"FirstName\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\"LastName\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\"FullName\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"Andres Ruiz\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\"IdTypeCode\\\\\\\\\\\\\\\":21,\\\\\\\\\\\\\\\"Identification\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"8676\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\"CheckDigit\\\\\\\\\\\\\\\":null,\\\\\\\\\\\\\\\"BranchOffice\\\\\\\\\\\\\\\":0,\\\\\\\\\\\\\\\"VATCompanyType\\\\\\\\\\\\\\\":0,\\\\\\\\\\\\\\\"CompanyName\\\\\\\\\\\\\\\":null,\\\\\\\\\\\\\\\"Address\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"Cra 48 N° 26 - 85 Av. Industriales; Medellín; Antioquia\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\"City\\\\\\\\\\\\\\\":6791,\\\\\\\\\\\\\\\"Phone\\\\\\\\\\\\\\\":[{\\\\\\\\\\\\\\\"indicative\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"1\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\"number\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"11111\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\"extension\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"1\\\\\\\\\\\\\\\"}]},\\\\\\\\\\\\\\\"Contacts\\\\\\\\\\\\\\\":[{\\\\\\\\\\\\\\\"FirstName\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"Contacto\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\"LastName\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"Prueba Asus\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\"Email\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"contacto@siigo.com\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\"IsPrincipal\\\\\\\\\\\\\\\":true,\\\\\\\\\\\\\\\"ContactId\\\\\\\\\\\\\\\":null,\\\\\\\\\\\\\\\"AccountCode\\\\\\\\\\\\\\\":null,\\\\\\\\\\\\\\\"Charge\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"Nuevo Cargo\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\"CellPhone\\\\\\\\\\\\\\\":{\\\\\\\\\\\\\\\"indicative\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"444\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\"number\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"4444444444\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\"extention\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"4\\\\\\\\\\\\\\\"}}],\\\\\\\\\\\\\\\"RelatedUsers\\\\\\\\\\\\\\\":{\\\\\\\\\\\\\\\"SalesmanId\\\\\\\\\\\\\\\":null,\\\\\\\\\\\\\\\"CollectorId\\\\\\\\\\\\\\\":null},\\\\\\\\\\\\\\\"CreatedByDate\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"2019-08-01T15:09:51.023Z\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\"CreatedByUser\\\\\\\\\\\\\\\":34156,\\\\\\\\\\\\\\\"UpdatedByDate\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"0001-01-01T00:00:00Z\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\"UpdatedByUser\\\\\\\\\\\\\\\":null,\\\\\\\\\\\\\\\"Comments\\\\\\\\\\\\\\\":null,\\\\\\\\\\\\\\\"FiscalResponsibilityCode\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"[{\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"FiscalResponsibilityID\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\":22,\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"Code\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"O-99\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"Description\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"Otro tipo de obligado\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"}]\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\"FreeFields\\\\\\\\\\\\\\\":[]}}\\\\\\\"\\\"\""
+		},
+		{
+			"id": "43dfcd74-afa2-46ce-8736-2aec35239e91",
+			"key": "jsonLevel",
+			"value": 2
+		},
+		{
+			"id": "7670bbed-444d-49c3-a493-d4628a5e591d",
+			"key": "index",
+			"value": true
+		},
+		{
+			"id": "5278dd37-cdb3-43ba-953a-34c2f56a5cd3",
+			"key": "jsonTest",
+			"value": ""
+		},
+		{
+			"id": "523dbf39-2e53-4547-9db8-f0162c1ce58b",
+			"key": "levelName1",
+			"value": ""
+		},
+		{
+			"id": "3c2abba1-7af3-488f-ac48-8f917c70f931",
+			"key": "levelName2",
+			"value": ""
+		},
+		{
+			"id": "d9f1fbc4-9edb-4e77-9f6c-02d42cc866c0",
+			"key": "levelName3",
+			"value": ""
+		},
+		{
+			"id": "4bed232f-fa0a-4a9a-a883-2318eebf2172",
+			"key": "propertyList",
+			"value": ""
+		},
+		{
+			"id": "eb9ecac3-c762-4736-933c-e6b36f3d17bd",
+			"key": "jsonTest ",
+			"value": ""
+		},
+		{
+			"id": "e75da08b-007f-4c2d-b144-8d8e67eda138",
+			"key": "reporte",
+			"value": true
+		}
+	],
+	"protocolProfileBehavior": {}
+}

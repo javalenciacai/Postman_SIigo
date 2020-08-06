@@ -1,0 +1,481 @@
+{
+	"info": {
+		"_postman_id": "16af3ff3-4104-4fd3-b04c-15272790e5d0",
+		"name": "TerceroJames",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d8c4a151-c323-4189-9d42-80f6ed2550ff",
+						"exec": [
+							"bodyRequest = JSON.parse(responseBody)",
+							"",
+							"var token_value = bodyRequest.access_token;",
+							"pm.environment.set(\"token\", token_value);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "5f2dbd1a-e4f7-4d31-bb5f-1d4561b9a391",
+						"exec": [
+							"pm.environment.set(\"urlToken\", \"http://23.101.145.208:50000\")\r",
+							"pm.environment.set(\"password\", \"1111\")\r",
+							"pm.environment.set(\"username\", \"empresaApi@estados.com\")\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic U2lpZ29XZWI6QUJBMDhCNkEtQjU2Qy00MEE1LTkwQ0YtN0MxRTU0ODkxQjYx",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "text"
+						},
+						{
+							"key": "scope",
+							"value": "WebApi offline_access",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "{{username}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{urlToken}}/connect/token",
+					"host": [
+						"{{urlToken}}"
+					],
+					"path": [
+						"connect",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "0eda6260-45a3-4f9f-9d79-1fa5a62ff07a",
+						"exec": [
+							"//url del api\r",
+							"pm.collectionVariables.set(\"urlApi\",\"https://qak8s.siigo.com\")\r",
+							"pm.collectionVariables.set(\"status\", 201);\r",
+							"pm.collectionVariables.set(\"jsonLevel\", 1);\r",
+							"pm.collectionVariables.set(\"index\", true);\r",
+							"pm.collectionVariables.set(\"arrayLevel0\", \"AccountDto\");\r",
+							"pm.collectionVariables.set(\"arrayLevel1\", \"Contacts\");\r",
+							"pm.collectionVariables.set(\"arrayLevel2\", \"\");\r",
+							"pm.collectionVariables.set(\"dataArray\",['Email','IsPrincipal']);\r",
+							"testjson = pm.collectionVariables.get(\"jsonBody\");\r",
+							"//local data\r",
+							"testjson = {\"AccountDto\":{\"IsActive\":true,\"BasicData\":{\"IsCustomer\":true,\"IsSupplier\":false,\"IsOther\":false,\"IsSocialReason\":true,\"FirstName\":\"\",\"LastName\":\"\",\"FullName\":\"Andres Ruiz\",\"IdTypeCode\":21,\"Identification\":\"8659\",\"CheckDigit\":null,\"BranchOffice\":0,\"VATCompanyType\":0,\"CompanyName\":null,\"Address\":\"Cra 48 N° 26 - 85 Av. Industriales; Medellín; Antioquia\",\"City\":6791,\"Phone\":[{\"indicative\":\"1\",\"number\":\"11111\",\"extension\":\"1\"}]},\"Contacts\":[{\"FirstName\":\"Contacto\",\"LastName\":\"Prueba Asus\",\"Email\":\"contacto@siigo.com\",\"IsPrincipal\":true,\"ContactId\":null,\"AccountCode\":null,\"Charge\":\"Nuevo Cargo\",\"CellPhone\":{\"indicative\":\"444\",\"number\":\"4444444444\",\"extention\":\"4\"}}],\"RelatedUsers\":{\"SalesmanId\":null,\"CollectorId\":null},\"CreatedByDate\":\"2019-08-01T15:09:51.023Z\",\"CreatedByUser\":34156,\"UpdatedByDate\":\"0001-01-01T00:00:00Z\",\"UpdatedByUser\":null,\"Comments\":null,\"FiscalResponsibilityCode\":\"[{\\\"FiscalResponsibilityID\\\":22,\\\"Code\\\":\\\"O-99\\\",\\\"Description\\\":\\\"Otro tipo de obligado\\\"}]\",\"FreeFields\":[]}}\r",
+							"\r",
+							"testjson = JSON.stringify(testjson);\r",
+							"pm.collectionVariables.set(\"jsonBody\", testjson);\r",
+							"\r",
+							"//testJsonResponse = pm.collectionVariables.get(\"jsonResponse\");\r",
+							"//Recibe la respuesta del archivo\r",
+							"testJsonResponse = {\"AccountDto\":{\"Id\":\"5f0f15c59c3e850001333883\",\"Guid\":\"a9b56b10-9490-4262-8d29-42e707ab0bdf\",\"TenantId\":\"0x00000000000000000000000000154602\",\"AccountId\":565395,\"IsActive\":false,\"BasicData\":{\"IsCustomer\":true,\"IsSupplier\":false,\"IsOther\":false,\"IsSocialReason\":true,\"FirstName\":\"\",\"LastName\":\"\",\"FullName\":\"Andres Ruiz\",\"IdTypeCode\":21,\"Identification\":\"8618\",\"CheckDigit\":null,\"BranchOffice\":0,\"VATCompanyType\":0,\"CompanyName\":null,\"Address\":\"Cra 48 N° 26 - 85 Av. Industriales; Medellín; Antioquia\",\"City\":6791,\"Phone\":[{\"Indicative\":\"1\",\"Number\":\"11112\",\"Extention\":\"\"}]},\"Contacts\":[{\"FirstName\":\"Contactos\",\"LastName\":\"Prueba Asus\",\"Email\":\"contacto@siigo.coma\",\"IsPrincipal\":true,\"ContactId\":265591,\"AccountCode\":565395,\"Charge\":\"Nuevo Cargo\",\"CellPhone\":{\"Indicative\":\"444\",\"Number\":\"4444444444\",\"Extention\":\"4\"}}],\"RelatedUsers\":{\"SalesmanId\":null,\"CollectorId\":null},\"Code\":\"ISY586RNST83WMW9EJWG\",\"CreatedByDate\":\"2020-07-15T14:42:12.7310052+00:00\",\"CreatedByUser\":7235,\"UpdatedByDate\":\"0001-01-01T00:00:00\",\"UpdatedByUser\":null,\"Comments\":null,\"Picture\":null,\"FiscalResponsibilityCode\":\"[{\\\"FiscalResponsibilityID\\\":22,\\\"Code\\\":\\\"O-99\\\",\\\"Description\\\":\\\"Otro tipo de obligado\\\"}]\",\"FreeFields\":[]}}\r",
+							"\r",
+							"/*testJsonResponse = {\"Status\":409,\"Service\":\"msthirdparty\",\"Errors\":[{\"Code\":\"0002010099\",\"Message\":\"Conflict Business Validation\",\"Source\":\"Siigo.MsThirdParty.Application\",\"Params\":[],\"Detail\":\"Validation failed: \\n -- Identification & BranchOffice: La identificación y la sucursal ya existena.\"}]}*/\r",
+							"//Se asigna a la var de colección\r",
+							"//testJsonResponse = JSON.stringify(testJsonResponse);\r",
+							"pm.collectionVariables.set(\"jsonResponse\", testJsonResponse);\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "cca602dc-cbab-47a2-b7f9-8afdbe886da4",
+						"exec": [
+							"//Estado de código\r",
+							"testStatus = pm.collectionVariables.get(\"status\");\r",
+							"//Respuesta del request\r",
+							"responseBodys = JSON.parse(responseBody);\r",
+							"//Respuesta del archivo\r",
+							"csvResponseBody = pm.collectionVariables.get(\"jsonResponse\");\r",
+							"//VAriable para obtener guid\r",
+							"try {\r",
+							"    pm.collectionVariables.set(\"ThirdGuid\", responseBodys.AccountDto.Guid);\r",
+							"}\r",
+							"catch (e) { }\r",
+							"//Variables para indicar el nivel dentro del json\r",
+							"arrayLevel0 = pm.collectionVariables.get(\"arrayLevel0\");\r",
+							"arrayLevel1 = pm.collectionVariables.get(\"arrayLevel1\");\r",
+							"arrayLevel2 = pm.collectionVariables.get(\"arrayLevel2\");\r",
+							"\r",
+							"objCsvResponse = [csvResponseBody[arrayLevel0],\r",
+							"csvResponseBody[arrayLevel0][arrayLevel1],\r",
+							"csvResponseBody[arrayLevel0][arrayLevel1][arrayLevel2]]\r",
+							"\r",
+							"objResponse = [responseBodys[arrayLevel0],\r",
+							"responseBodys[arrayLevel0][arrayLevel1],\r",
+							"responseBodys[arrayLevel0][arrayLevel1][arrayLevel2]]\r",
+							"//Array de propiedades\r",
+							"dataArray = pm.collectionVariables.get(\"dataArray\");\r",
+							"//Variable que indica a que nivel del json se ingresa\r",
+							"jsonLevel = pm.collectionVariables.get(\"jsonLevel\");\r",
+							"//Variable para indicar \r",
+							"index = pm.collectionVariables.get(\"index\");\r",
+							"\r",
+							"console.log(\"responBody  dentro del for-in: \" +  pm.response.json().AccountDto.BasicData.Phone[0]['number']);\r",
+							"\r",
+							"//contador\r",
+							"csvRespondeLength = 0;\r",
+							"\r",
+							"function propiertyCount() {\r",
+							"    for (prop in objCsvResponse[jsonLevel]) {\r",
+							"        var csvRespondeLength = csvRespondeLength + 1;\r",
+							"    }\r",
+							"    return csvRespondeLength;\r",
+							"}\r",
+							"\r",
+							"function selectFunctByIndex() {\r",
+							"    if (index) {\r",
+							"        return validateDataByIndex()\r",
+							"    } else {\r",
+							"        return validateData()\r",
+							"    }\r",
+							"}\r",
+							"\r",
+							"function validateData() {\r",
+							"    do {\r",
+							"        var i = 0;\r",
+							"        \r",
+							"\r",
+							"        for (propierty in dataArray) {\r",
+							"            //variables para recorrer la respuesta del request y la respuesta del csv\r",
+							"            var responBody = objResponse[jsonLevel][dataArray[propierty]];            \r",
+							"            var responCsvBody = objCsvResponse[jsonLevel][dataArray[propierty]];\r",
+							"            console.log(\"responBody dentro del for-in: \" + responBody);\r",
+							"            if (responBody != responCsvBody) {\r",
+							"                report = (\"Valor no coincide: \" + dataArray[propierty] + \" Valor response: \" + responBody + \" valor csv: \" + responCsvBody);\r",
+							"                pm.collectionVariables.set(\"report\", false);\r",
+							"                return report;\r",
+							"            }\r",
+							"            else {\r",
+							"                pm.collectionVariables.set(\"report\", true);\r",
+							"            }\r",
+							"        }\r",
+							"        i++;\r",
+							"        console.log(\"propiertyCount() \" + propiertyCount());\r",
+							"    } while (i < propiertyCount())\r",
+							"    return (\"Pasó!\");\r",
+							"}\r",
+							"\r",
+							"function validateDataByIndex() {\r",
+							"    do {\r",
+							"        var i = 0;\r",
+							"        for (propierty in dataArray) {            \r",
+							"            //variables para recorrer la respuesta del request y la respuesta del csv\r",
+							"            var responBody = objResponse[jsonLevel][i][dataArray[propierty]];            \r",
+							"            var responCsvBody = objCsvResponse[jsonLevel][i][dataArray[propierty]];           \r",
+							"            if (responBody != responCsvBody) {\r",
+							"                report = (\"Valor no coincide: \" + dataArray[propierty] + \" Valor response: \" + responBody + \" valor csv: \" + responCsvBody);\r",
+							"                pm.collectionVariables.set(\"report\", false);\r",
+							"                return report;\r",
+							"            }\r",
+							"            else {\r",
+							"                pm.collectionVariables.set(\"report\", true);\r",
+							"            }\r",
+							"        }\r",
+							"        i++;\r",
+							"        console.log(\"propiertyCount() \" + propiertyCount());\r",
+							"    } while (i < propiertyCount())\r",
+							"    return (\"Pasó!\");\r",
+							"}\r",
+							"\r",
+							"pm.test(\"Status code is \" + testStatus, function () {\r",
+							"    pm.response.to.have.status(testStatus);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Basic data \" + selectFunctByIndex(), function () {\r",
+							"    pm.expect(pm.collectionVariables.get(\"report\")).to.eql(true);\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "{{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{{jsonBody}}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{urlApi}}/api/third-party/account",
+					"host": [
+						"{{urlApi}}"
+					],
+					"path": [
+						"api",
+						"third-party",
+						"account"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "{{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{urlApi}}/api/third-party/account/{{ThirdGuid}}",
+					"host": [
+						"{{urlApi}}"
+					],
+					"path": [
+						"api",
+						"third-party",
+						"account",
+						"{{ThirdGuid}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "59f9779d-4656-4456-a783-e0f722fed451",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "44178ed7-1eca-4ba5-b2fc-4574dc188c5f",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "b48f230b-b918-4a0b-87f8-f2f7784bdbb1",
+			"key": "json",
+			"value": "{\"AccountDto\":{\"IsActive\":true,\"BasicData\":{\"IsCustomer\":true,\"IsSupplier\":false,\"IsOther\":false,\"IsSocialReason\":true,\"FirstName\":\"a\",\"LastName\":\"b\",\"FullName\":\"Andres Ruiz\",\"IdTypeCode\":21,\"Identification\":\"89031938\",\"CheckDigit\":null,\"BranchOffice\":0,\"VATCompanyType\":0,\"CompanyName\":null,\"Address\":\"Cra 48 N° 26 - 85 Av. Industriales; Medellín; Antioquia\",\"City\":6791,\"Phone\":[{\"indicative\":\"1\",\"number\":\"11111\",\"extension\":\"1\"}]},\"Contacts\":[{\"FirstName\":\"Contacto\",\"LastName\":\"Prueba Asus\",\"Email\":\"contacto@siigo.com\",\"IsPrincipal\":true,\"ContactId\":null,\"AccountCode\":null,\"Charge\":\"Nuevo Cargo\",\"CellPhone\":{\"indicative\":\"444\",\"number\":\"4444444444\",\"extention\":\"4\"}}],\"RelatedUsers\":{\"SalesmanId\":null,\"CollectorId\":null},\"CreatedByDate\":\"2019-08-01T15:09:51.023Z\",\"CreatedByUser\":34156,\"UpdatedByDate\":\"0001-01-01T00:00:00Z\",\"UpdatedByUser\":null,\"Comments\":null,\"FiscalResponsibilityCode\":\"[{\\\"FiscalResponsibilityID\\\":22,\\\"Code\\\":\\\"O-99\\\",\\\"Description\\\":\\\"Otro tipo de obligado\\\"}]\",\"FreeFields\":[]}}"
+		},
+		{
+			"id": "55e5afc2-793c-44f1-b829-d5033ebe98de",
+			"key": "status",
+			"value": 201
+		},
+		{
+			"id": "49f75a09-ee0d-4b78-86e7-49043a481784",
+			"key": "urlApi",
+			"value": "https://qak8s.siigo.com"
+		},
+		{
+			"id": "40081a35-5f4b-4e6d-8e1a-b2cf1b4bca9c",
+			"key": "guid",
+			"value": "ceb7dc80-ac60-424f-8287-4c8332167d82"
+		},
+		{
+			"id": "00744968-3a35-417e-aead-0e9c7243b1cb",
+			"key": "jsonBody",
+			"value": "{\"AccountDto\":{\"IsActive\":true,\"BasicData\":{\"IsCustomer\":true,\"IsSupplier\":false,\"IsOther\":false,\"IsSocialReason\":true,\"FirstName\":\"\",\"LastName\":\"\",\"FullName\":\"Andres Ruiz\",\"IdTypeCode\":21,\"Identification\":\"8656\",\"CheckDigit\":null,\"BranchOffice\":0,\"VATCompanyType\":0,\"CompanyName\":null,\"Address\":\"Cra 48 N° 26 - 85 Av. Industriales; Medellín; Antioquia\",\"City\":6791,\"Phone\":[{\"indicative\":\"1\",\"number\":\"11111\",\"extension\":\"1\"}]},\"Contacts\":[{\"FirstName\":\"Contacto\",\"LastName\":\"Prueba Asus\",\"Email\":\"contacto@siigo.com\",\"IsPrincipal\":true,\"ContactId\":null,\"AccountCode\":null,\"Charge\":\"Nuevo Cargo\",\"CellPhone\":{\"indicative\":\"444\",\"number\":\"4444444444\",\"extention\":\"4\"}}],\"RelatedUsers\":{\"SalesmanId\":null,\"CollectorId\":null},\"CreatedByDate\":\"2019-08-01T15:09:51.023Z\",\"CreatedByUser\":34156,\"UpdatedByDate\":\"0001-01-01T00:00:00Z\",\"UpdatedByUser\":null,\"Comments\":null,\"FiscalResponsibilityCode\":\"[{\\\"FiscalResponsibilityID\\\":22,\\\"Code\\\":\\\"O-99\\\",\\\"Description\\\":\\\"Otro tipo de obligado\\\"}]\",\"FreeFields\":[]}}"
+		},
+		{
+			"id": "3e13e9bb-ddbc-4422-a50c-5f05379a3af8",
+			"key": "jsonResponse",
+			"value": {
+				"AccountDto": {
+					"AccountId": 565395,
+					"BasicData": {
+						"Address": "Cra 48 N° 26 - 85 Av. Industriales; Medellín; Antioquia",
+						"BranchOffice": 0,
+						"CheckDigit": null,
+						"City": 6791,
+						"CompanyName": null,
+						"FirstName": "",
+						"FullName": "Andres Ruiz",
+						"IdTypeCode": 21,
+						"Identification": "8618",
+						"IsCustomer": true,
+						"IsOther": false,
+						"IsSocialReason": true,
+						"IsSupplier": false,
+						"LastName": "",
+						"Phone": [
+							{
+								"Extention": "",
+								"Indicative": "1",
+								"Number": "11112"
+							}
+						],
+						"VATCompanyType": 0
+					},
+					"Code": "ISY586RNST83WMW9EJWG",
+					"Comments": null,
+					"Contacts": [
+						{
+							"AccountCode": 565395,
+							"CellPhone": {
+								"Extention": "4",
+								"Indicative": "444",
+								"Number": "4444444444"
+							},
+							"Charge": "Nuevo Cargo",
+							"ContactId": 265591,
+							"Email": "contacto@siigo.com",
+							"FirstName": "Contactos",
+							"IsPrincipal": true,
+							"LastName": "Prueba Asus"
+						}
+					],
+					"CreatedByDate": "2020-07-15T14:42:12.7310052+00:00",
+					"CreatedByUser": 7235,
+					"FiscalResponsibilityCode": "[{\"FiscalResponsibilityID\":22,\"Code\":\"O-99\",\"Description\":\"Otro tipo de obligado\"}]",
+					"FreeFields": [],
+					"Guid": "a9b56b10-9490-4262-8d29-42e707ab0bdf",
+					"Id": "5f0f15c59c3e850001333883",
+					"IsActive": false,
+					"Picture": null,
+					"RelatedUsers": {
+						"CollectorId": null,
+						"SalesmanId": null
+					},
+					"TenantId": "0x00000000000000000000000000154602",
+					"UpdatedByDate": "0001-01-01T00:00:00",
+					"UpdatedByUser": null
+				}
+			}
+		},
+		{
+			"id": "b169f678-9668-479d-af98-aee49026375c",
+			"key": "report",
+			"value": true
+		},
+		{
+			"id": "5ee90567-9385-4d8e-821a-1a7eb4576c55",
+			"key": "arrayResponse",
+			"value": "AccountDto"
+		},
+		{
+			"id": "03629d57-9c19-4aa8-a075-5ff3f48ce5db",
+			"key": "subArray",
+			"value": true
+		},
+		{
+			"id": "c4e44558-f548-463d-be00-ca3a1586d384",
+			"key": "dataArray",
+			"value": [
+				"number"
+			]
+		},
+		{
+			"id": "8ed01bbc-a983-4d1e-b6f5-dc8769c14212",
+			"key": "ThirdGuid",
+			"value": "d5c55222-1e62-45ca-8eb7-f5e52655fad9"
+		},
+		{
+			"id": "3ffff4b5-f63c-411b-ac9f-ed9622d7fd82",
+			"key": "jsonLevel",
+			"value": 2
+		},
+		{
+			"id": "9276aee6-3088-47cf-8b9b-d9f5d77f9dc0",
+			"key": "arrayLevel1",
+			"value": "BasicData"
+		},
+		{
+			"id": "c060d326-70a3-4084-a79f-6e488f6c9084",
+			"key": "arrayLevel2",
+			"value": "Phone"
+		},
+		{
+			"id": "db08e855-bf4f-4c90-9b6b-a03e6b893e74",
+			"key": "arrayLevel3",
+			"value": "Phone"
+		},
+		{
+			"id": "5ae78569-6af0-4deb-b0d6-d3a743f5bc3c",
+			"key": "arrayLevel0",
+			"value": "AccountDto"
+		},
+		{
+			"id": "97a69d2c-887d-4dca-b84b-2baeef204c5c",
+			"key": "index",
+			"value": true
+		}
+	],
+	"protocolProfileBehavior": {}
+}
