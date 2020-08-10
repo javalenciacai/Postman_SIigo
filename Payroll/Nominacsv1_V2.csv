@@ -6,8 +6,4 @@ http://23.101.145.208:50000,admin@prwizarddef3.com,1111,1,Nomina Enero 2021,2021
 http://23.101.145.208:50000,admin@prwizarddef3.com,1111,,,,,is an invalid start of a value. Path: $.periodType,400,,,,,,400,1,400,Bad Request
 http://23.101.145.208:50000,admin@prwizarddef3.com,1111,1,,,,is an invalid start of a value. Path: $.year,400,,,,,,400,kjhdasja,400,The value 'kjhdasja' is not valid.
 http://23.101.145.208:50000,admin@prwizarddef3.com,1111,1,,2021,,is an invalid start of a value. Path: $.month,400,,,,,,404,,404,The value 'null' is not valid.
-<<<<<<< HEAD
 http://23.101.145.208:50000,admin@prwizarddef3.com,2222,,,,,,401,,,,,,404,,404,Unauthorized
-=======
-http://23.101.145.208:50000,admin@prwizarddef3.com,2222,,,,,,404,,,,,,401,,404,Payroll Deleted
->>>>>>> 356a86109064e3c06e3603d5734c9f05511f3e19
