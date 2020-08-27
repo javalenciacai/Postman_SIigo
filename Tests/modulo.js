@@ -1,4 +1,3 @@
-export function getUsefulContents(){
 postman.setEnvironmentVariable("utils", () => {
     //todo la codificacion se encasula aqui
 
@@ -210,6 +209,3 @@ postman.setEnvironmentVariable("utils", () => {
 
 
 
-
-
-}
