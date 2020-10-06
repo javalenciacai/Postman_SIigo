@@ -191,7 +191,7 @@
 
 	function validateByIndexWithoutName() {
 		console.log("validateByIndexWithoutName")
-	       
+	       	var point = '.';
 		var i = 0;
 		try {
 		        var csvRespondeLengthTwo = Object.keys(csvResponseBody).length;
@@ -201,11 +201,12 @@
 		        return "***ERROR***La informacion no fue encontrada por favor verifique***ERROR***"
 		    }
 		do {
+		var indexLocal = [i]
 		    for (propierty in propertyList) {
 		        
 		        //variables para recorrer la respuesta del request y la respuesta del csv
-		        responBody = getValueJSON("[" + i + "]." +  propertyList[propierty], responseData);
-		        responCsvBody = getValueJSON("[" + i + "]." +  propertyList[propierty], csvResponseBody);
+		        responBody = getValueJSON(indexLocal + point +  propertyList[propierty], responseData);
+		        responCsvBody = getValueJSON(indexLocal +  propertyList[propierty], csvResponseBody);
 
 		        if (responBody === undefined) { pm.collectionVariables.set("reporte", false); return "***ERROR***La informacion no fue encontrada por favor verifique***ERROR***" }
 
