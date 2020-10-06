@@ -206,7 +206,7 @@
 		        
 		        //variables para recorrer la respuesta del request y la respuesta del csv
 		        responBody = getValueJSON(indexLocal + point +  propertyList[propierty], responseData);
-		        responCsvBody = getValueJSON(indexLocal +  propertyList[propierty], csvResponseBody);
+		        responCsvBody = getValueJSON(indexLocal + point + propertyList[propierty], csvResponseBody);
 
 		        if (responBody === undefined) { pm.collectionVariables.set("reporte", false); return "***ERROR***La informacion no fue encontrada por favor verifique***ERROR***" }
 
