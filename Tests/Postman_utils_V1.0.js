@@ -170,7 +170,7 @@ function validateByIndexWithoutName() {
 		    }
 		do {
 		    for (propierty in propertyList) {
-		        console.log("paso 2 "+"[" + i + "]." +  propertyList[propierty])
+		        console.log("paso 2 "+ propertyList[propierty])
 		        //variables para recorrer la respuesta del request y la respuesta del csv
 		        responBody = getValueJSON("[" + i + "]." +  propertyList[propierty], responseData);
 			    console.log("paso 3 ")
