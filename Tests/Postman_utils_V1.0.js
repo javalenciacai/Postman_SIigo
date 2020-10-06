@@ -7,8 +7,7 @@
     //Obtiene el json de respuesta del archivo
     if (pm.variables.get("jsonTest") != "") {
          csvResponseBody = JSON.parse(pm.variables.get("jsonTest"));
-    }
-	console.log("Paso 8 " + csvResponseBody);
+    }	
     //Obtiene el array con las propiedades que se verificarán
     propertyList = (pm.variables.get("propertyList")).split(",");
     pathlevel = pm.variables.get("pathlevel");
@@ -159,7 +158,7 @@
 
 function validateByIndexWithoutName() {
 		console.log("validateByIndexWithoutName");
-	       
+	       	console.log("Paso 0 " + csvResponseBody);
 		var i = 0;
 		try {
 		        var csvRespondeLengthTwo = Object.keys(csvResponseBody).length;
