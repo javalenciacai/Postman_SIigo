@@ -171,11 +171,11 @@ function validateByIndexWithoutName() {
 		do {
 		    for (propierty in propertyList) {
 		        console.log("paso 2 "+ propertyList[propierty]);
-			  console.log("paso 2.1 "+ [i] +  propertyList[propierty]);  
+			  console.log("paso 2.1 "+ [i] + "." + propertyList[propierty]);  
 		        //variables para recorrer la respuesta del request y la respuesta del csv
-		        responBody = getValueJSON([i] +  propertyList[propierty], responseData);
+		        responBody = getValueJSON([i] + "." + propertyList[propierty], responseData);
 			console.log("paso 3 ");
-		        responCsvBody = getValueJSON([i] +  propertyList[propierty], csvResponseBody);
+		        responCsvBody = getValueJSON([i] + "." + propertyList[propierty], csvResponseBody);
 			console.log("paso 4 ");
 
 		        if (responBody === undefined) { pm.collectionVariables.set("reporte", false); return "***ERROR***La informacion no fue encontrada por favor verifique***ERROR***" }
