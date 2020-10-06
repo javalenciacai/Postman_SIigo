@@ -10,7 +10,6 @@
     }
     //Obtiene el array con las propiedades que se verificarán
     propertyList = (pm.variables.get("propertyList")).split(",");
-	console.log("paso 8 "+ propertyList);
     pathlevel = pm.variables.get("pathlevel");
     pathLevelIndexByProperties = pm.variables.get("pathLevelIndexByProperties");
     index = pm.variables.get("index");
@@ -158,12 +157,12 @@
     }
 
 function validateByIndexWithoutName() {
-		console.log("validateByIndexWithoutName")
+		console.log("validateByIndexWithoutName");
 	       
 		var i = 0;
 		try {
 		        var csvRespondeLengthTwo = Object.keys(csvResponseBody).length;
-			console.log("paso 1 " + csvRespondeLengthTwo)
+			console.log("paso 1 " + csvRespondeLengthTwo);
 		    } catch (e) {
 		        console.log("Contador csvRespondeLengthTwo Null");
 		        pm.collectionVariables.set("reporte", false);
@@ -171,15 +170,16 @@ function validateByIndexWithoutName() {
 		    }
 		do {
 		    for (propierty in propertyList) {
-		        console.log("paso 2 "+ propertyList[propierty])
+		        console.log("paso 2 "+ propertyList[propierty]);
+			  console.log("paso 2.1 "+ "[" + i + "]." +  propertyList[propierty]);  
 		        //variables para recorrer la respuesta del request y la respuesta del csv
 		        responBody = getValueJSON("[" + i + "]." +  propertyList[propierty], responseData);
-			    console.log("paso 3 ")
+			console.log("paso 3 ");
 		        responCsvBody = getValueJSON("[" + i + "]." +  propertyList[propierty], csvResponseBody);
-			    console.log("paso 4 ")
+			console.log("paso 4 ");
 
 		        if (responBody === undefined) { pm.collectionVariables.set("reporte", false); return "***ERROR***La informacion no fue encontrada por favor verifique***ERROR***" }
-			console.log("paso 5 ")
+			console.log("paso 5 ");
 		        if (responBody != responCsvBody) {
 				console.log("paso 6 ")
 		            //esta opcion esta modificada para nomina se le agrego la impresion del empleado
@@ -192,7 +192,7 @@ function validateByIndexWithoutName() {
 		        }
 		    }
 		    i++;
-			console.log("paso 7 ")
+			console.log("paso 7 ");
 		} while (i < csvRespondeLengthTwo)
 		return ("es correcta");
 	    }
