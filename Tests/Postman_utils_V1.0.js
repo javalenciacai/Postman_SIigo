@@ -6,8 +6,9 @@
     }
     //Obtiene el json de respuesta del archivo
     if (pm.variables.get("jsonTest") != "") {
-        csvResponseBody = JSON.parse(pm.variables.get("jsonTest"));
+         csvResponseBody = JSON.parse(pm.variables.get("jsonTest"));
     }
+	console.log("Paso 8 " + csvResponseBody);
     //Obtiene el array con las propiedades que se verificarán
     propertyList = (pm.variables.get("propertyList")).split(",");
     pathlevel = pm.variables.get("pathlevel");
