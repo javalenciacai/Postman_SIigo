@@ -10,6 +10,7 @@
     }
     //Obtiene el array con las propiedades que se verificarán
     propertyList = (pm.variables.get("propertyList")).split(",");
+	console.log("paso 8 "+ propertyList);
     pathlevel = pm.variables.get("pathlevel");
     pathLevelIndexByProperties = pm.variables.get("pathLevelIndexByProperties");
     index = pm.variables.get("index");
