@@ -158,7 +158,7 @@
 
 function validateByIndexWithoutName() {
 		console.log("validateByIndexWithoutName");
-	       	console.log("Paso 0 " + csvResponseBody);
+	       	console.log("Paso 0 " + responseData);
 		var i = 0;
 		try {
 		        var csvRespondeLengthTwo = Object.keys(csvResponseBody).length;
