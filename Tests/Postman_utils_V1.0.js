@@ -162,6 +162,7 @@ function validateByIndexWithoutName() {
 		var i = 0;
 		try {
 		        var csvRespondeLengthTwo = Object.keys(csvResponseBody).length;
+			console.log("paso 1 " + csvRespondeLengthTwo)
 		    } catch (e) {
 		        console.log("Contador csvRespondeLengthTwo Null");
 		        pm.collectionVariables.set("reporte", false);
@@ -169,14 +170,17 @@ function validateByIndexWithoutName() {
 		    }
 		do {
 		    for (propierty in propertyList) {
-		        
+		        console.log("paso 2 ")
 		        //variables para recorrer la respuesta del request y la respuesta del csv
 		        responBody = getValueJSON("[" + i + "]." +  propertyList[propierty], responseData);
+			    console.log("paso 3 ")
 		        responCsvBody = getValueJSON("[" + i + "]." +  propertyList[propierty], csvResponseBody);
+			    console.log("paso 4 ")
 
 		        if (responBody === undefined) { pm.collectionVariables.set("reporte", false); return "***ERROR***La informacion no fue encontrada por favor verifique***ERROR***" }
-
+			console.log("paso 5 ")
 		        if (responBody != responCsvBody) {
+				console.log("paso 6 ")
 		            //esta opcion esta modificada para nomina se le agrego la impresion del empleado
 		            report = ("no coincide: " + propertyList[propierty] + ". Valor de la ejecución: " + responBody + ". Valor csv: " + responCsvBody);
 		            pm.collectionVariables.set("reporte", false);
@@ -187,6 +191,7 @@ function validateByIndexWithoutName() {
 		        }
 		    }
 		    i++;
+			console.log("paso 7 ")
 		} while (i < csvRespondeLengthTwo)
 		return ("es correcta");
 	    }
